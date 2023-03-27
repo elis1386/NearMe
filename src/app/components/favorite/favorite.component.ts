@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-favorite',
@@ -7,21 +6,47 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./favorite.component.css'],
 })
 export class FavoriteComponent {
-  public activities_api_url =
-    'https://cors-anywhere.herokuapp.com/https://open-api.myhelsinki.fi/v1/activities/';
+  /* favorites array just for testing purpose */
+  public favorites = [
+    {
+      img: 'https://source.unsplash.com/random/?restaurant/300x100',
+      title: 'Title 1',
+      description: 'Description about place here',
+      address: 'Address 5 16A',
+    },
+    {
+      img: 'https://source.unsplash.com/random/?bar/300x100',
+      title: 'Title 2',
+      description: 'Description about place here',
+      address: 'Address 5 16A',
+    },
+    {
+      img: 'https://source.unsplash.com/random/?restaurant/',
+      title: 'Title 3',
+      description: 'Description about place here',
+      address: 'Address 5 16A',
+    },
+    {
+      img: 'https://source.unsplash.com/random/?restaurant/300x100',
+      title: 'Title 1',
+      description: 'Description about place here',
+      address: 'Address 5 16A',
+    },
+    {
+      img: 'https://source.unsplash.com/random/?bar/300x100',
+      title: 'Title 2',
+      description: 'Description about place here',
+      address: 'Address 5 16A',
+    },
+    {
+      img: 'https://source.unsplash.com/random',
+      title: 'Title 3',
+      description: 'Description about place here',
+      address: 'Address 5 16A',
+    },
+  ];
 
-  randomPhoto = 'https://source.unsplash.com/random/?restaurant/300x100';
   isVisable: boolean = false;
 
-  constructor(private http: HttpClient) {}
-
-  ngOnInit() {
-    this.getData();
-  }
-
-  getData() {
-    this.http.get(this.activities_api_url).subscribe((data) => {
-      console.log(data);
-    });
-  }
+  constructor() {}
 }
