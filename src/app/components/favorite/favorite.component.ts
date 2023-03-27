@@ -28,19 +28,19 @@ export class FavoriteComponent {
     },
     {
       img: 'https://source.unsplash.com/random/?restaurant/300x100',
-      title: 'Title 1',
+      title: 'Title 4',
       description: 'Description about place here',
       address: 'Address 5 16A',
     },
     {
       img: 'https://source.unsplash.com/random/?bar/300x100',
-      title: 'Title 2',
+      title: 'Title 5',
       description: 'Description about place here',
       address: 'Address 5 16A',
     },
     {
       img: 'https://source.unsplash.com/random',
-      title: 'Title 3',
+      title: 'Title 6',
       description: 'Description about place here',
       address: 'Address 5 16A',
     },
@@ -48,5 +48,11 @@ export class FavoriteComponent {
 
   isVisable: boolean = false;
 
-  constructor() {}
+  removeFavorite(title: string) {
+    // TODO: have to remove from backend aswell
+    // pass id instead? pass title just for testing
+    this.favorites = this.favorites.filter(
+      (favorite) => favorite.title !== title
+    );
+  }
 }
