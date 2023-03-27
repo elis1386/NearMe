@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
 
+/* move all interfaces to types folder? */
+interface Favorite {
+  img: string;
+  title: string;
+  description: string;
+  address: string;
+}
+
 @Component({
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
@@ -7,7 +15,7 @@ import { Component } from '@angular/core';
 })
 export class FavoriteComponent {
   /* favorites array just for testing purpose */
-  public favorites = [
+  public favorites: Favorite[] = [
     {
       img: 'https://source.unsplash.com/random/?restaurant/300x100',
       title: 'Title 1',

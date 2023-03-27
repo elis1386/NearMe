@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <section class="row">
+  <section *ngIf="favorites.length; else noFavorites" class="row">
     <div
       *ngFor="let favorite of favorites"
       class="col-12 col-sm-6 col-md-4 mb-5"
@@ -26,10 +26,21 @@
             type="button"
             class="btn btn-danger"
           >
+            <i class="bi bi-trash3-fill"></i>
             Delete
           </button>
         </div>
       </div>
     </div>
   </section>
+  <!-- if no favorites then show this -->
+  <ng-template #noFavorites>
+    <div
+      class="alert alert-primary d-flex gap-2 align-items-center"
+      role="alert"
+    >
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <div>No favorites found</div>
+    </div>
+  </ng-template>
 </div>
