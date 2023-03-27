@@ -1,73 +1,28 @@
-<section class="d-flex gap-4 favorite">
+<div class="container mt-5">
+  <section class="row">
+    <div
+      *ngFor="let favorite of favorites"
+      class="col-12 col-sm-6 col-md-4 mb-5"
+    >
+      <div class="card">
+        <img
+          [src]="favorite.img"
+          class="card-img-top"
+          alt="Favorite place image"
+        />
 
-<div class="card mb-3">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Beef & Grill</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
+        <div class="card-body">
+          <h5 class="card-title">{{ favorite.title }}</h5>
+          <p class="card-text">{{ favorite.description }}</p>
+          <div class="stars">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Kasper</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Kasper</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Friend's</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Mexicano</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
