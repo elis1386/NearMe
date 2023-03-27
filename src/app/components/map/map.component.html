@@ -1,0 +1,44 @@
+<div class="row">
+  <div
+    class="d-flex justify-content-between flex-md-nowrap align-items-center m-2"
+  >
+    <div class="d-flex flex-wrap filters">
+      <button class="btn btn-outline-secondary" type="button" (click)="isVisible = !isVisible">
+        <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-bank2"> &nbsp;</i>Musems
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-film">&nbsp;</i>Cinema
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-bank">&nbsp;</i>Theatres
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-cup-straw">&nbsp;</i>Drinks
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-star">&nbsp;</i>Things to do
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-tree">&nbsp;</i>Parks
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-music-note-beamed">&nbsp;</i>Dance
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-shop">&nbsp;</i>Shops
+      </button>
+      <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-easel2">&nbsp;</i>Art
+      </button>
+    </div>
+  </div>
+
+  <main class="col-md-12 col-lg-12">
+    <google-map class="map" height="700px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="isVisible = !isVisible">
+    </google-map>
+  </main>
+  <app-favorite *ngIf="isVisible"></app-favorite>
+</div>

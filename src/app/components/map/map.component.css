@@ -1,0 +1,23 @@
+.row{
+    overflow: scroll;
+    height: 650px;
+}
+.map{
+    position: relative; 
+}
+.filters{
+    gap: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .filters{
+        gap: 1rem;
+    }
+   
+  }
+  @media only screen and (max-width: 425px) {
+    .filters{
+        gap: .6em;
+    }
+   
+  }

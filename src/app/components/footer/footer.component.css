@@ -1,0 +1,14 @@
+.footer {
+ border-bottom: 1px solid rgb(164, 164, 164);
+}
+.links {
+  color: grey;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.links:hover {
+  color: var(--main-color);
+}
+.bi {
+ font-size: 1.8rem;
+}
