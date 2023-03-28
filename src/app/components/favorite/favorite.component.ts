@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-
-/* move all interfaces to types folder? */
-interface Favorite {
-  img: string;
-  title: string;
-  description: string;
-  address: string;
-}
+import { Favorite } from 'src/app/models/favorite';
 
 @Component({
   selector: 'app-favorite',
