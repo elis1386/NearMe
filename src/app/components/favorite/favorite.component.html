@@ -1,8 +1,8 @@
-<div class="container mt-5">
-  <section *ngIf="favorites.length; else noFavorites" class="row">
+<div class="container overflow-auto py-2">
+  <section *ngIf="favorites.length; else noFavorites" class="row flex-nowrap">
     <div
       *ngFor="let favorite of favorites"
-      class="col-12 col-sm-6 col-md-4 mb-5"
+      class="col-12 col-md-6 col-xl-4 col-xxl-3"
     >
       <div class="card">
         <img
