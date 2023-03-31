@@ -1,0 +1,68 @@
+<main class="form-signUp">
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+    <h1 class="h3 mb-3 fw-normal text-center">Please fill in the form below.</h1>
+    <div class="form-floating mb-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="enter you first name"
+        required=""
+        formControlName="firstName"
+      />
+      <label for="floatingInput">First name</label>
+    </div>
+    <div class="form-floating mb-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="enter you last name"
+        required=""
+        formControlName="lastName"
+      />
+      <label for="floatingInput">Last name</label>
+    </div>
+    <div class="form-floating mb-4">
+      <input
+        type="email"
+        class="form-control"
+        placeholder="name@example.com"
+        required=""
+        formControlName="email"
+      />
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-4">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        required=""
+        formControlName="password"
+
+      />
+      <label for="floatingPassword">Password</label>
+      <p
+      *ngIf="
+      this.firebaseErrorMessage 
+      "
+    >
+      <small class="text-danger">login or password is incorrect, please try again.</small>
+    </p>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" class="form-check-input" /> Remember me
+      </label>
+    </div>
+    <button
+      class="w-100 btn btn-lg"
+      type="submit"
+      value="Sign Up"
+    >
+      Sign up
+    </button>
+  </form>
+</main>
+
+
