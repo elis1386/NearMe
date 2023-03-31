@@ -12,6 +12,7 @@ import { ListComponent } from './components/list/list.component';
 import { SearchComponent } from './components/search/search.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { WeatherComponent } from './components/weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ListComponent,
     SearchComponent,
     FavoriteComponent,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,
