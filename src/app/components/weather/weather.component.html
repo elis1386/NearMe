@@ -1,8 +1,12 @@
-<div *ngIf="weatherInfo" class="row flex-nowrap overflow-auto px-2">
+<div *ngIf="weatherInfo" class="row flex-nowrap overflow-auto px-2 pb-3">
   <div *ngFor="let weather of weatherInfo.weatherArr" class="col-4 col-md-3">
     <img [src]="weather.weather[0].icon" alt="weather icon" />
-    <h5>{{ weatherInfo.city }}</h5>
-    <p>{{ weather.main.temp }}&#176;C</p>
-    <p>{{ weather.dt_txt }}</p>
+    <p>{{ weatherInfo.city }}</p>
+    <p>
+      <small>{{ weather.main.temp }}&#176;C</small>
+    </p>
+    <p>
+      <small>{{ weather.dt_txt }}</small>
+    </p>
   </div>
 </div>
