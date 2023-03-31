@@ -20,16 +20,16 @@ export class WeatherComponent {
   getWeather() {
     this.http.get(this.WEATHER_API_URL).subscribe((res: any) => {
       const city = res.city.name;
-      const weatherArray = res.list.slice(0, 4);
+      const weatherArray = res.list.slice(0, 10);
       // clean up some results
       for (let i = 0; i < weatherArray.length; i++) {
         const element = weatherArray[i];
         element.main.temp = Math.round(element.main.temp);
         element.weather[0].icon = `https://openweathermap.org/img/w/${element.weather[0].icon}.png`;
-        const times = element.dt_txt.split(' ');
-        element.dt_txt = times[1];
+        /* const times = element.dt_txt.split(' ');
+        element.dt_txt = times[1].slice(0, 5); */
+        element.dt_txt = element.dt_txt.slice(5, 16);
       }
-
       this.weatherInfo = {
         city: city,
         weatherArr: weatherArray,

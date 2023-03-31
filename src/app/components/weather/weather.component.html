@@ -1,15 +1,8 @@
-<div *ngIf="weatherInfo" class="d-flex flex-row gap-4">
-  <div *ngFor="let weather of weatherInfo.weatherArr" class="card">
-    <img
-      class="card-img-top"
-      [src]="weather.weather[0].icon"
-      alt="weather icon"
-    />
-    <div class="card-body">
-      <h5 class="card-title">{{ weatherInfo.city }}</h5>
-      <p>{{ weather.main.temp }}&#176;C</p>
-      <p>{{ weather.dt_txt }}</p>
-      <p>{{ weather.weather[0].description }}</p>
-    </div>
+<div *ngIf="weatherInfo" class="row flex-nowrap overflow-auto px-2">
+  <div *ngFor="let weather of weatherInfo.weatherArr" class="col-4 col-md-3">
+    <img [src]="weather.weather[0].icon" alt="weather icon" />
+    <h5>{{ weatherInfo.city }}</h5>
+    <p>{{ weather.main.temp }}&#176;C</p>
+    <p>{{ weather.dt_txt }}</p>
   </div>
 </div>
