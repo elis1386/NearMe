@@ -1,36 +1,55 @@
-header{
-    margin-top: 1rem;
+header {
+  margin-top: 1rem;
 }
-.logo{
-    width: 20%;
+.logo {
+  width: 20%;
 }
-a{
-    width: 50%;
-    margin: 1rem;
-}
-.btn{
-    background-color: var(--main-color);
-    color: white;
-}
-.text-end{
+a {
+  width: 50%;
   margin: 1rem;
 }
-
+.signUp-btn {
+  background-color: var(--signUp-btn);
+  color: white;
+}
+.btn {
+  background-color: var(--main-color);
+  color: white;
+}
+.text-end {
+  margin: 1rem;
+}
+.bi-person-circle{
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+.dropdown-toggle::after{
+  color: var(--main-color);
+}
 
 @media only screen and (max-width: 768px) {
-    .logo {
-      width: 50%;
-    }
+  .logo {
+    width: 50%;
   }
-  
-  @media only screen and (max-width: 425px) {
-    .logo {
-        width: 70%;
-      }
-    .banklogin{
-      font-size: 1rem;
-    }
-    header{
-        margin-top: .8em;
-    }
+  .bi-person-circle{
+    font-size: 2rem;
   }
+  .dropdown-toggle::after{
+    font-size: 2rem;
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+  .logo {
+    width: 70%;
+  }
+  .banklogin {
+    font-size: 1rem;
+  }
+  header {
+    margin-top: 0.8em;
+  }
+ 
+
+}

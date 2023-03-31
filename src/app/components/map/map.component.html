@@ -37,7 +37,7 @@
   </div>
 
   <main class="col-md-12 col-lg-12">
-    <google-map class="map" height="700px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="isVisible = !isVisible">
+    <google-map class="map"  height="700px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="isVisible = !isVisible">
     </google-map>
   </main>
   <app-favorite *ngIf="isVisible"></app-favorite>

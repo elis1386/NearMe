@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,8 +11,29 @@ import { MapComponent } from './components/map/map.component';
 import { ListComponent } from './components/list/list.component';
 import { SearchComponent } from './components/search/search.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
-import { GoogleMapsModule } from '@angular/google-maps'
-
+import { GoogleMapsModule } from '@angular/google-maps';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import {
+  AngularFireDatabase,
+  AngularFireDatabaseModule,
+} from '@angular/fire/compat/database';
+import { environment } from '../environments/enviorment';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import {
+  provideFirestore,
+  getFirestore,
+  Firestore,
+} from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { AuthService } from './services/auth.service';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +43,29 @@ import { GoogleMapsModule } from '@angular/google-maps'
     MapComponent,
     ListComponent,
     SearchComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    SignUpComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,30 @@
+.form-signUp {
+    width: 30%;
+    margin: 4rem auto;
+    height: 500px;
+  }
+  .btn {
+    background-color: var(--signUp-btn);
+    color: white;
+  }
+  .form-check-input:checked {
+    background-color: var(--signUp-btn);
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .form-signUp {
+      width: 60%;
+      height: 500px;
+      margin: 2rem auto;
+    }
+  }
+  
+  @media only screen and (max-width: 425px) {
+    .form-signUp {
+      width: 90%;
+    }
+    .banklogin {
+      font-size: 1rem;
+    }
+  }
+  

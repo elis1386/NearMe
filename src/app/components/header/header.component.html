@@ -2,8 +2,40 @@
   <a href="/" class="mb-2 mt-2 text-decoration-none">
     <img [src]="imgUrl" alt="Near me logo" class="logo" />
   </a>
-
   <div class="col-md-3 text-end">
-  <button type="button" class="btn">Sign-up</button>
+    <button type="button" class="btn signUp-btn" *ngIf="isLogged">
+      Sign-up
+    </button>
+    <button
+      type="button"
+      class="btn"
+      *ngIf="!(auth.user | async)"
+      [routerLink]="['/sign-in']"
+    >
+      Sign-in
+    </button>
   </div>
+  <article class="dropdown text-end" *ngIf="auth.user | async">
+    <a
+      class="d-block link-dark text-decoration-none dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      ><i class="bi bi-person-circle"></i>
+    </a>
+    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+      <li>
+        <a class="dropdown-item"> Hello, {{ currentUser.firstName }}</a>
+      </li>
+      <li><hr class="dropdown-divider" /></li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          [routerLink]="['']"
+          (click)="this.authService.SignOut()"
+          >Sign out</a
+        >
+      </li>
+    </ul>
+  </article>
 </header>
