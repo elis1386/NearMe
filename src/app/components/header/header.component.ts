@@ -39,5 +39,6 @@ export class HeaderComponent implements OnInit {
       let loggedUser = JSON.parse(localStorage.getItem('user')!);
       this.currentUser = loggedUser;
     },1000);
+
   }
 }

@@ -16,6 +16,17 @@ a {
   background-color: var(--main-color);
   color: white;
 }
+
+}
+.signUp-btn {
+  background-color: var(--signUp-btn);
+  color: white;
+}
+.btn {
+  background-color: var(--main-color);
+  color: white;
+}
+
 .text-end {
   margin: 1rem;
 }
@@ -25,6 +36,7 @@ a {
 }
 .dropdown-toggle::after{
   color: var(--main-color);
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -51,5 +63,5 @@ a {
     margin-top: 0.8em;
   }
  
-
 }
+

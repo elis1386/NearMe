@@ -16,6 +16,9 @@
     </button>
   </div>
   <article class="dropdown text-end" *ngIf="auth.user | async">
+  </div>
+  <article class="dropdown text-end" *ngIf="auth.user | async ">
+
     <a
       class="d-block link-dark text-decoration-none dropdown-toggle"
       data-bs-toggle="dropdown"
@@ -24,7 +27,10 @@
     </a>
     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
       <li>
+
         <a class="dropdown-item"> Hello, {{ currentUser.firstName }}</a>
+
+
       </li>
       <li><hr class="dropdown-divider" /></li>
       <li>
