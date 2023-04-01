@@ -35,9 +35,10 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.zone.run(() => {
+    setInterval(() => {
       let loggedUser = JSON.parse(localStorage.getItem('user')!);
       this.currentUser = loggedUser;
-    });
+    },1000);
+
   }
 }

@@ -16,6 +16,15 @@ a {
   background-color: var(--main-color);
   color: white;
 }
+.signUp-btn {
+  background-color: var(--signUp-btn);
+  color: white;
+}
+.btn {
+  background-color: var(--main-color);
+  color: white;
+}
+
 .text-end {
   margin: 1rem;
 }
@@ -23,15 +32,22 @@ a {
   font-size: 1.5rem;
   color: var(--main-color);
 }
-.user{
-  color: black;
-  font-size: 1rem;
+.dropdown-toggle::after{
+  color: var(--main-color);
+
 }
 
 @media only screen and (max-width: 768px) {
   .logo {
     width: 50%;
   }
+  .bi-person-circle{
+    font-size: 2rem;
+  }
+  .dropdown-toggle::after{
+    font-size: 2rem;
+  }
+
 }
 
 @media only screen and (max-width: 425px) {
@@ -44,4 +60,6 @@ a {
   header {
     margin-top: 0.8em;
   }
+ 
 }
+
