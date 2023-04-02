@@ -41,5 +41,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# openweathermap api key 
-config.ts
+# api keys 
+keys.ts

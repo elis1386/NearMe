@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { env } from 'src/config';
+import { env } from 'src/keys';
 import { HttpClient } from '@angular/common/http';
 import { Weather_res, Weather_info } from 'src/app/models/weather';
 
