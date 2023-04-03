@@ -1,25 +1,38 @@
-.row{
-    overflow: scroll;
-    height: 650px;
+.row {
+  overflow: scroll;
+  height: 650px;
 }
-.map{
-    position: relative; 
+.map {
+  position: relative;
 }
-.filters{
-    gap: 1.5rem;
+.filters {
+  gap: 1.5rem;
 }
 
 @media only screen and (max-width: 768px) {
-    .filters{
-        gap: .8em 2.3rem;
-        margin-bottom: .5em;
-      }
-   
+  .filters {
+    gap: 0.8em 2.3rem;
+    margin-bottom: 0.5em;
   }
-  @media only screen and (max-width: 425px) {
-    .filters{
-        gap: 1rem 1.4rem;
-        margin-bottom: .5em;
-      }
-   
+}
+@media only screen and (max-width: 425px) {
+  .filters {
+    gap: 1rem 1.4rem;
+    margin-bottom: 0.5em;
   }
+}
+
+@media only screen and (max-width: 767px) {
+  .laptop-view {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-dropdown {
+    display: none;
+  }
+  .laptop-view {
+    display: block;
+  }
+}
