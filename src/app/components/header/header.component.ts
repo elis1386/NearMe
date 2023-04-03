@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
     setInterval(() => {
       let loggedUser = JSON.parse(localStorage.getItem('user')!);
       this.currentUser = loggedUser;
-    },1000);
+    }, 1000);
 
   }
 }

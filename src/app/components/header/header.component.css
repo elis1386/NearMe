@@ -16,8 +16,6 @@ a {
   background-color: var(--main-color);
   color: white;
 }
-
-}
 .signUp-btn {
   background-color: var(--signUp-btn);
   color: white;
