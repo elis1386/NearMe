@@ -1,43 +1,118 @@
 <div class="row">
-  <app-weather></app-weather>
-  <div
-    class="d-flex justify-content-between flex-md-nowrap align-items-center m-2"
-  >
-    <div class="d-flex flex-wrap filters">
+  <!-- mobile filters and weather view -->
+  <div class="mobile-dropdown">
+    <div class="dropdown d-flex align-items-center gap-2">
       <button
-        class="btn btn-outline-secondary"
+        class="btn btn-primary dropdown-toggle ms-1"
         type="button"
-        (click)="isVisible = !isVisible"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+        Filters
       </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-bank2"> &nbsp;</i>Musems
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-film">&nbsp;</i>Cinema
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-bank">&nbsp;</i>Theatres
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-cup-straw">&nbsp;</i>Drinks
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-star">&nbsp;</i>Things to do
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-tree">&nbsp;</i>Parks
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-music-note-beamed">&nbsp;</i>Dance
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-shop">&nbsp;</i>Shops
-      </button>
-      <button class="btn btn-outline-secondary" type="button">
-        <i class="bi bi-easel2">&nbsp;</i>Art
-      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <button
+            class="btn btn-outline-secondary dropdown-item"
+            type="button"
+            (click)="isVisible = !isVisible"
+          >
+            <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-bank2"> &nbsp;</i>Musems
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-film">&nbsp;</i>Cinema
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-bank">&nbsp;</i>Theatres
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-cup-straw">&nbsp;</i>Drinks
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-star">&nbsp;</i>Things to do
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-tree">&nbsp;</i>Parks
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-music-note-beamed">&nbsp;</i>Dance
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-shop">&nbsp;</i>Shops
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-easel2">&nbsp;</i>Art
+          </button>
+        </li>
+      </ul>
+      <div class="overflow-auto">
+        <app-weather></app-weather>
+      </div>
+    </div>
+  </div>
+  <!-- laptop filters and weather view -->
+  <div class="laptop-view">
+    <app-weather></app-weather>
+    <div
+      class="d-flex justify-content-between flex-md-nowrap align-items-center m-2"
+    >
+      <div class="d-flex flex-wrap filters">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="isVisible = !isVisible"
+        >
+          <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-bank2"> &nbsp;</i>Musems
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-film">&nbsp;</i>Cinema
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-bank">&nbsp;</i>Theatres
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-cup-straw">&nbsp;</i>Drinks
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-star">&nbsp;</i>Things to do
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-tree">&nbsp;</i>Parks
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-music-note-beamed">&nbsp;</i>Dance
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-shop">&nbsp;</i>Shops
+        </button>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="bi bi-easel2">&nbsp;</i>Art
+        </button>
+      </div>
     </div>
   </div>
 
