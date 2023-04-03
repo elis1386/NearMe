@@ -1,20 +1,23 @@
-import { Injectable, NgZone } from '@angular/core';
-import { User } from '../models/user';
-import * as auth from 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Injectable, NgZone } from "@angular/core";
+import { User } from "../models/user";
+import * as auth from "firebase/auth";
+import { AngularFireAuth } from "@angular/fire/compat/auth";
 import {
   AngularFirestore,
+  AngularFirestoreCollection,
   AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import firebase from 'firebase/compat/app';
+} from "@angular/fire/compat/firestore";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import firebase from "firebase/compat/app";
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
+  userRef!: AngularFirestoreCollection<User>;
   userData: any;
   user: any;
+  userLoggedIn: boolean = false;
 
   constructor(
     public database: AngularFirestore,
@@ -22,14 +25,16 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    this.auth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-      } else {
+    this.auth.authState.subscribe((user)=> {
+      this.userLoggedIn = false;
+      if(user) {
+        this.userLoggedIn = true
+      }else{
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
+        this.userLoggedIn = false
       }
+    this.userRef = this.database.collection<User>('users');
     });
   }
 
@@ -38,15 +43,15 @@ export class AuthService {
     return this.auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('Auth service: loginUser: success');
+        console.log("Auth service: loginUser: success");
         this.getUserData().then(() => {
-          this.router.navigate(['/map']);
+          this.router.navigate(["/map"]);
         });
       })
       .catch((error) => {
-        console.log('Auth service: login error...');
-        console.log('error code', error.code);
-        console.log('error', error);
+        console.log("Auth service: login error...");
+        console.log("error code", error.code);
+        console.log("error", error);
         if (error.code) return { isValid: false, message: error.message };
         return error.message;
       });
@@ -79,13 +84,13 @@ export class AuthService {
     return this.auth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(["verify-email-address"]);
       });
   }
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(localStorage.getItem("user")!);
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
@@ -99,26 +104,26 @@ export class AuthService {
   getUserData() {
     return firebase
       .firestore()
-      .collection('users')
+      .collection("users")
       .doc(firebase.auth().currentUser?.uid)
       .get()
       .then((doc) => {
         if (doc.exists) {
           console.log(doc.data());
           this.user = doc.data();
-          localStorage.setItem('user', JSON.stringify(doc.data()));
-          JSON.parse(localStorage.getItem('user')!);
+          localStorage.setItem("user", JSON.stringify(doc.data()));
+          JSON.parse(localStorage.getItem("user")!);
         }
       })
       .catch((error) => {
-        console.log('Error getting document:', error);
+        console.log("Error getting document:", error);
       });
   }
   // Sign out
   SignOut() {
     return this.auth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      localStorage.removeItem("user");
+      this.router.navigate(["sign-in"]);
     });
   }
 }

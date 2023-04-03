@@ -1,9 +1,14 @@
 <div class="row">
+  <app-weather></app-weather>
   <div
     class="d-flex justify-content-between flex-md-nowrap align-items-center m-2"
   >
     <div class="d-flex flex-wrap filters">
-      <button class="btn btn-outline-secondary" type="button" (click)="isVisible = !isVisible">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="isVisible = !isVisible"
+      >
         <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
       </button>
       <button class="btn btn-outline-secondary" type="button">
@@ -37,7 +42,14 @@
   </div>
 
   <main class="col-md-12 col-lg-12">
-    <google-map class="map"  height="700px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="isVisible = !isVisible">
+    <google-map
+      class="map"
+      height="700px"
+      width="100%"
+      [center]="center"
+      [zoom]="zoom"
+      (mapClick)="isVisible = !isVisible"
+    >
     </google-map>
   </main>
   <app-favorite *ngIf="isVisible"></app-favorite>
