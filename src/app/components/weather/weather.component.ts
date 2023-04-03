@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { env } from 'src/keys';
-import { HttpClient } from '@angular/common/http';
-import { Weather_res, Weather_info } from 'src/app/models/weather';
+import { Component } from "@angular/core";
+import { env } from "src/keys";
+import { HttpClient } from "@angular/common/http";
+import { Weather_res, Weather_info } from "src/app/models/weather";
 
 @Component({
-  selector: 'app-weather',
-  templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css'],
+  selector: "app-weather",
+  templateUrl: "./weather.component.html",
+  styleUrls: ["./weather.component.css"],
 })
 export class WeatherComponent {
   weatherInfo: Partial<Weather_info> = {};
@@ -27,7 +27,7 @@ export class WeatherComponent {
         const element = weatherArray[i];
         element.main.temp = Math.round(element.main.temp);
         element.weather[0].icon = `https://openweathermap.org/img/w/${element.weather[0].icon}.png`;
-        element.dt_txt = element.dt_txt.slice(5, 16);
+        element.dt_txt = element.dt_txt.slice(10, 16);
       }
       this.weatherInfo = {
         city: city,
