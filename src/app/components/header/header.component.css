@@ -2,7 +2,7 @@ header {
   margin-top: 1rem;
 }
 .logo {
-  width: 20%;
+  max-height: 30px;
 }
 a {
   width: 50%;
@@ -28,38 +28,37 @@ a {
 .text-end {
   margin: 1rem;
 }
-.bi-person-circle{
+.bi-person-circle {
   font-size: 1.5rem;
   color: var(--main-color);
 }
-.dropdown-toggle::after{
+.dropdown-toggle::after {
   color: var(--main-color);
-
 }
 
 @media only screen and (max-width: 768px) {
-  .logo {
-    width: 50%;
-  }
-  .bi-person-circle{
+  .bi-person-circle {
     font-size: 2rem;
   }
-  .dropdown-toggle::after{
+  .dropdown-toggle::after {
     font-size: 2rem;
   }
-
+  .weather {
+    max-width: 120px;
+  }
 }
 
 @media only screen and (max-width: 425px) {
-  .logo {
-    width: 70%;
-  }
   .banklogin {
     font-size: 1rem;
   }
   header {
     margin-top: 0.8em;
   }
- 
 }
 
+@media only screen and (min-width: 769px) {
+  .weather {
+    max-width: 400px;
+  }
+}
