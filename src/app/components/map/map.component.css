@@ -1,12 +1,27 @@
-.row {
-  overflow: scroll;
-  height: 650px;
+main {
+  margin-top: -3%;
 }
+
 .map {
   position: relative;
 }
+.filters-box {
+  position: relative;
+  top: 10%;
+  z-index: 1;
+}
 .filters {
   gap: 1.5rem;
+}
+.btn:hover {
+  background-color: #787878;
+  color: white;
+}
+.btn {
+  background: #f8f9fa;
+  border: none;
+  color: #1c1c1d;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 768px) {
@@ -25,6 +40,14 @@
 @media only screen and (max-width: 767px) {
   .laptop-view {
     display: none;
+  }
+  main {
+    margin-top: -28%;
+  }
+  .filters-box {
+    position: relative;
+    top: 20%;
+    z-index: 1;
   }
 }
 

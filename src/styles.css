@@ -6,4 +6,6 @@
   --signUp-btn: #ff904d;
   --main-text: #504b43;
 }
-
+.gmnoprint{
+  display: none;
+}
