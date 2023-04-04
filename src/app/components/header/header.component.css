@@ -28,7 +28,8 @@ a {
 .text-end {
   margin: 1rem;
 }
-.bi-person-circle {
+.bi-person-circle,
+.bi-cloud-fill {
   font-size: 1.5rem;
   color: var(--main-color);
 }
@@ -37,14 +38,12 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-  .bi-person-circle {
+  .bi-person-circle,
+  .bi-cloud-fill {
     font-size: 2rem;
   }
   .dropdown-toggle::after {
     font-size: 2rem;
-  }
-  .weather {
-    max-width: 120px;
   }
 }
 
@@ -57,8 +56,10 @@ a {
   }
 }
 
-@media only screen and (min-width: 769px) {
-  .weather {
-    max-width: 400px;
-  }
+.mobile-weather {
+  max-width: 150px;
+}
+
+.laptop-weather {
+  max-width: 400px;
 }

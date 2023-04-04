@@ -15,7 +15,28 @@
       Sign-in
     </button>
   </div>
-  <div *ngIf="auth.user | async" class="weather overflow-auto">
+  <!-- mobile weather view -->
+  <div *ngIf="auth.user | async" class="dropdown d-md-none">
+    <button
+      [ngStyle]="{ background: 'none', color: 'rgb(121, 83, 178)' }"
+      class="btn"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <i class="bi bi-cloud-fill"></i>
+    </button>
+    <ul class="dropdown-menu mobile-weather p-2">
+      <div class="overflow-auto">
+        <app-weather></app-weather>
+      </div>
+    </ul>
+  </div>
+  <!-- laptop weather view -->
+  <div
+    *ngIf="auth.user | async"
+    class="laptop-weather overflow-auto d-none d-md-block"
+  >
     <app-weather></app-weather>
   </div>
   <article class="dropdown text-end" *ngIf="auth.user | async">
