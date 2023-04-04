@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { mapKey } from "src/keys";
 
 @Component({
   selector: "app-map",
@@ -7,14 +9,9 @@ import { Component } from "@angular/core";
 })
 export class MapComponent {
   isVisible: boolean = false;
-  apiKye: string = "AIzaSyAp2aFUhqhey1y77f7FBb-7L6KraRxdC1M";
 
   /* Map */
 
-  /*   map = new google.maps.Map((),{
-    center: { lat: 60.18608603539844, lng: 24.943128762153208 },
-    zoom: 8,
-  }); */
   display: any;
   center: google.maps.LatLngLiteral = {
     lat: 60.18608603539844,
@@ -22,3 +19,8 @@ export class MapComponent {
   };
   zoom = 13;
 }
+
+//API_KEY for all requests 
+/* https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=restaurant&name=harbour&key=
+${mapKey.MAP_API_KEY}
+ */
