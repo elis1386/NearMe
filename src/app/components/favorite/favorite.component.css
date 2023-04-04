@@ -1,3 +1,7 @@
+.row {
+  height: 600px;
+}
+
 .card img {
   object-fit: cover;
   width: 100%;
