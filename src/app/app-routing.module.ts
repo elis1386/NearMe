@@ -9,9 +9,9 @@ import { FavoriteComponent } from "./components/favorite/favorite.component";
 
 const routes: Routes = [
   { path: "", component: MainComponent },
-  { path: "", redirectTo: "/sign-in", pathMatch: "full" },
-  { path: "sign-in", component: SignInComponent },
-  { path: "register-user", component: SignUpComponent },
+  { path: "", redirectTo: "/sign-in", pathMatch: "full",},
+  { path: "sign-in", component: SignInComponent, },
+  { path: "register-user", component: SignUpComponent ,},
   { path: "map", component: MapComponent, canActivate: [AuthGuard] },
   { path: "favorite", component: FavoriteComponent },
 ];
