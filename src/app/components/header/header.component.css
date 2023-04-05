@@ -2,7 +2,7 @@ header {
   margin-top: 1rem;
 }
 .logo {
-  max-height: 40px;
+  width: 35%;
 }
 a {
   width: 50%;
@@ -45,14 +45,17 @@ a {
   .dropdown-toggle::after {
     font-size: 2rem;
   }
+  .logo {
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 425px) {
-  .banklogin {
-    font-size: 1rem;
-  }
   header {
     margin-top: 0.8em;
+  }
+  .logo {
+    width: 90%;
   }
 }
 

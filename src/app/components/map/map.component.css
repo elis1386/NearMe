@@ -9,19 +9,33 @@ main {
   position: absolute;
   top: 2%;
   z-index: 1;
+  margin: 0.5em;
 }
 .filters {
   gap: 1.5rem;
 }
 .btn:hover {
-  background-color: #787878;
-  color: white;
+  background-color: white;
+  color: var(--main-text);
+  border: 1px solid var(--main-text);
 }
 .btn {
-  background: #f8f9fa;
+  background: #aaa7a4;
+  padding: 0.7em;
+  border-radius: 1rem;
   border: none;
-  color: #1c1c1d;
+  color: white;
   font-weight: 500;
+}
+.mobile-dropdown {
+  display: none;
+}
+.dropdown-menu {
+  background: none;
+  border: none;
+}
+.dropdown-item{
+  margin-bottom: .5em;
 }
 
 @media only screen and (max-width: 768px) {
@@ -31,31 +45,14 @@ main {
   }
 }
 @media only screen and (max-width: 425px) {
-  .filters {
-    gap: 1rem 1.4rem;
-    margin-bottom: 0.5em;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .laptop-view {
+  .filters-box {
     display: none;
   }
-  main {
-    margin-top: -28%;
-  }
-  .filters-box {
-    position: relative;
+  .mobile-dropdown {
+    display: block;
+    position: absolute;
     top: 20%;
     z-index: 1;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .mobile-dropdown {
-    display: none;
-  }
-  .laptop-view {
-    display: block;
+    width: 100%;
   }
 }
