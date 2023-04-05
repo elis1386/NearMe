@@ -1,77 +1,73 @@
 <!-- mobile filters and weather view -->
-<div class="mobile-dropdown">
-  <div class="dropdown d-flex align-items-center gap-2">
-    <button
-      class="btn btn-secondary-outline dropdown-toggle ms-1 w-50"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      filters for searching
-    </button>
-    <ul class="dropdown-menu">
-      <li>
-        <button
-          class="btn btn-outline-secondary dropdown-item"
-          type="button"
-          (click)="isVisible = !isVisible"
-        >
-          <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-bank2"> &nbsp;</i>Musems
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-film">&nbsp;</i>Cinema
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-bank">&nbsp;</i>Theatres
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-cup-straw">&nbsp;</i>Drinks
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-star">&nbsp;</i>Things to do
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-tree">&nbsp;</i>Parks
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-music-note-beamed">&nbsp;</i>Dance
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-shop">&nbsp;</i>Shops
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-easel2">&nbsp;</i>Art
-        </button>
-      </li>
-    </ul>
+<div class="position-relative">
+  <div class="mobile-dropdown">
+    <div class="dropdown d-flex align-items-center gap-2">
+      <button
+        class="btn btn-secondary-outline dropdown-toggle ms-1 w-50"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        filters for searching
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-bank2"> &nbsp;</i>Musems
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-film">&nbsp;</i>Cinema
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-bank">&nbsp;</i>Theatres
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-cup-straw">&nbsp;</i>Drinks
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-star">&nbsp;</i>Things to do
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-tree">&nbsp;</i>Parks
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-music-note-beamed">&nbsp;</i>Dance
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-shop">&nbsp;</i>Shops
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-outline-secondary dropdown-item" type="button">
+            <i class="bi bi-easel2">&nbsp;</i>Art
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <section class="map">
-  <div
-    class="filters-box"
-  >
+  <div class="filters-box">
     <div class="d-flex flex-wrap filters">
       <button
         class="btn btn-outline-secondary"
@@ -117,7 +113,7 @@
     ngx-google-places-autocomplete
     #placesRef="ngx-places"
   >
-  <!--   <input
+    <!--   <input
       type="text"
       [(ngModel)]="placesText"
       #placesRef="ngx-places"
