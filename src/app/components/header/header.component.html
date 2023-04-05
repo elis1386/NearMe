@@ -15,8 +15,31 @@
       Sign-in
     </button>
   </div>
-  <article class="dropdown text-end" *ngIf="auth.user | async ">
-
+  <!-- mobile weather view -->
+  <div *ngIf="auth.user | async" class="d-md-none">
+    <button
+      [ngStyle]="{
+        background: 'none',
+        color: 'rgb(121, 83, 178)'
+      }"
+      class="btn"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseWeather"
+      aria-expanded="false"
+      aria-controls="collapseWeather"
+    >
+      <i class="bi bi-cloud-fill"></i>
+    </button>
+  </div>
+  <!-- laptop weather view -->
+  <div
+    *ngIf="auth.user | async"
+    class="laptop-weather overflow-auto d-none d-md-block"
+  >
+    <app-weather></app-weather>
+  </div>
+  <article class="dropdown text-end" *ngIf="auth.user | async">
     <a
       class="d-block link-dark text-decoration-none dropdown-toggle"
       data-bs-toggle="dropdown"
@@ -25,10 +48,7 @@
     </a>
     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
       <li>
-
         <a class="dropdown-item"> Hello, {{ currentUser.firstName }}</a>
-
-
       </li>
       <li><hr class="dropdown-divider" /></li>
       <li>
@@ -43,3 +63,9 @@
     </ul>
   </article>
 </header>
+<!-- mobile weather collapse -->
+<div class="collapse d-md-none" id="collapseWeather">
+  <div class="overflow-auto">
+    <app-weather></app-weather>
+  </div>
+</div>
