@@ -6,8 +6,8 @@ main {
   position: relative;
 }
 .filters-box {
-  position: relative;
-  top: 10%;
+  position: absolute;
+  top: 2%;
   z-index: 1;
 }
 .filters {
