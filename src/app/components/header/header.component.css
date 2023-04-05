@@ -2,7 +2,7 @@ header {
   margin-top: 1rem;
 }
 .logo {
-  max-height: 30px;
+  max-height: 40px;
 }
 a {
   width: 50%;
@@ -54,10 +54,6 @@ a {
   header {
     margin-top: 0.8em;
   }
-}
-
-.mobile-weather {
-  max-width: 150px;
 }
 
 .laptop-weather {
