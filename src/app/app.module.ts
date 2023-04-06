@@ -35,6 +35,7 @@ import { SignInComponent } from "./components/sign-in/sign-in.component";
 import { AuthService } from "./services/auth.service";
 import { CommonModule } from "@angular/common";
 import { WeatherComponent } from "./components/weather/weather.component";
+
 @NgModule({
   declarations: [
     AppComponent,
