@@ -35,6 +35,7 @@ import { SignInComponent } from "./components/sign-in/sign-in.component";
 import { AuthService } from "./services/auth.service";
 import { CommonModule } from "@angular/common";
 import { WeatherComponent } from "./components/weather/weather.component";
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { WeatherComponent } from "./components/weather/weather.component";
     SignUpComponent,
     SignInComponent,
     WeatherComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { WeatherComponent } from "./components/weather/weather.component";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    GooglePlaceModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
