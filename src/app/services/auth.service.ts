@@ -8,7 +8,6 @@ import {
   AngularFirestoreDocument,
 } from "@angular/fire/compat/firestore";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs";
 import firebase from "firebase/compat/app";
 @Injectable({
   providedIn: "root",
@@ -25,17 +24,25 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    this.auth.authState.subscribe((user)=> {
+    this.auth.authState.subscribe((user) => {
       this.userLoggedIn = false;
-      if(user) {
-        this.userLoggedIn = true
-      }else{
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-        this.userLoggedIn = false
+      if (user) {
+        this.userLoggedIn = true;
+      } else {
+        localStorage.setItem("user", "null");
+        JSON.parse(localStorage.getItem("user")!);
+        this.userLoggedIn = false;
       }
-    this.userRef = this.database.collection<User>('users');
+      this.userRef = this.database.collection<User>("users");
     });
+  }
+  /*     ; */
+
+  setToken(token: string) {
+    localStorage.setItem("token", token);
+  }
+  getToken() {
+    return localStorage.getItem("token");
   }
 
   //Sign in method
@@ -69,7 +76,7 @@ export class AuthService {
           firstName: user.firstName,
           lastName: user.lastName,
           email: emailLower,
-          password: user.password,
+          /*     password: user.password, */
         };
 
         this.SetUserData(userData);

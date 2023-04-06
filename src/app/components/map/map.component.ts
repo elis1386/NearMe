@@ -38,5 +38,6 @@ export class MapComponent implements OnInit {
       this.map = new google.maps.Map(document.getElementById("#map")!, {
         ...this.options,
       });
+      console.log(this.options);
   }
 }
