@@ -70,6 +70,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+
     GooglePlaceModule
   ],
   providers: [AuthService],
