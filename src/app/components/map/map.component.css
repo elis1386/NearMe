@@ -51,7 +51,7 @@ main {
   .mobile-dropdown {
     display: block;
     position: absolute;
-    top: 20%;
+    top: 15%;
     z-index: 1;
     width: 100%;
   }

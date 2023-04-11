@@ -1,8 +1,11 @@
 header {
   margin-top: 1rem;
+  height: 80px;
 }
 .logo {
-  width: 35%;
+
+  width: 25%;
+
 }
 a {
   width: 50%;
@@ -56,6 +59,8 @@ a {
   }
   .logo {
     width: 90%;
+    margin-bottom: 1rem;
+
   }
 }
 
