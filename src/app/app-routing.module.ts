@@ -6,6 +6,7 @@ import { SignInComponent } from "./components/sign-in/sign-in.component";
 import { SignUpComponent } from "./components/sign-up/sign-up.component";
 import { AuthGuard } from "./services/auth.guard";
 import { FavoriteComponent } from "./components/favorite/favorite.component";
+import { ListComponent } from "./components/list/list.component";
 
 const routes: Routes = [
   { path: "", component: MainComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "register-user", component: SignUpComponent },
   { path: "map", component: MapComponent, canActivate: [AuthGuard] },
   { path: "favorite", component: FavoriteComponent },
+  { path: "list", component: ListComponent },
 ];
 
 @NgModule({
