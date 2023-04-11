@@ -70,28 +70,19 @@
       <button class="btn btn-outline-secondary" type="button">
         <i class="bi bi-tree">&nbsp;</i>Parks
       </button>
-
     </div>
   </div>
+  <div id="map">
   <google-map
     width="100%"
     height="750px"
     [scrollTop]="0"
-    [center]="center"
-    [zoom]="zoom"
     [options]="options"
     (mapClick)="isVisible = !isVisible"
     ngx-google-places-autocomplete
     #placesRef="ngx-places"
   >
-    <!--   <input
-      type="text"
-      [(ngModel)]="placesText"
-      #placesRef="ngx-places"
-      placeholder="Set truck location..."
-      ngx-google-places-autocomplete
-      (onAddressChange)="handleAddressChange($event)"
-    /> -->
   </google-map>
+</div>
 </section>
 <app-favorite *ngIf="isVisible"></app-favorite>
