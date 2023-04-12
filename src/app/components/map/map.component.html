@@ -90,14 +90,13 @@
     </div>
   </div>
   <!-- sidebar list button -->
-  <div class="show-list-btn">
+  <div *ngIf="placesResult.length" class="show-list-btn">
     <button
-      class="btn shadow-lg"
+      class="btn rounded-start shadow-lg"
       [ngStyle]="{
         background: 'white',
         color: 'white',
-        border: '1px solid black',
-        borderRadius: '10%'
+        border: '1px solid black'
       }"
       type="button"
       data-bs-toggle="offcanvas"

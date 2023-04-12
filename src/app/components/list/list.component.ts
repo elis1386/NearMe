@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "app-list",
@@ -7,4 +8,22 @@ import { Component, Input } from "@angular/core";
 })
 export class ListComponent {
   @Input() placesList: any[] = [];
+
+  // add ratingArray value to objects so we can loop trough and add stars
+  // does this everytime placesList changes
+  ngOnChanges(changes: SimpleChanges) {
+    for (let i = 0; i < changes["placesList"].currentValue.length; i++) {
+      let element = changes["placesList"].currentValue[i];
+
+      if (element.rating) {
+        let emptyArr = [];
+        let roundedRating = Math.round(element.rating);
+        for (let j = 0; j < roundedRating; j++) {
+          const rating = j;
+          emptyArr.push(rating);
+        }
+        element.ratingArray = emptyArr;
+      }
+    }
+  }
 }
