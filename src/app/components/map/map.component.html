@@ -97,7 +97,7 @@
         background: 'white',
         color: 'white',
         border: '1px solid black',
-        borderRadius: '20%'
+        borderRadius: '10%'
       }"
       type="button"
       data-bs-toggle="offcanvas"
@@ -118,7 +118,7 @@
     >
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-          Backdrop with scrolling
+          Places of interest
         </h5>
         <button
           type="button"
@@ -128,7 +128,7 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-        <p>Try scrolling the rest of the page to see this option in action.</p>
+        <app-list [placesList]="placesResult"></app-list>
       </div>
     </div>
   </div>
