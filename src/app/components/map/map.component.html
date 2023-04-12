@@ -89,6 +89,49 @@
       </button>
     </div>
   </div>
+  <!-- sidebar list button -->
+  <div class="show-list-btn">
+    <button
+      class="btn shadow-lg"
+      [ngStyle]="{
+        background: 'white',
+        color: 'white',
+        border: '1px solid black',
+        borderRadius: '20%'
+      }"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions"
+      aria-controls="offcanvasWithBothOptions"
+    >
+      <i
+        [ngStyle]="{ background: 'white', color: 'black' }"
+        class="bi bi-arrow-bar-right"
+      ></i>
+    </button>
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+          Backdrop with scrolling
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+      </div>
+    </div>
+  </div>
   <!-- MAP -->
   <div id="map"></div>
 </section>
