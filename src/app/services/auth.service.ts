@@ -69,7 +69,6 @@ export class AuthService {
           firstName: user.firstName,
           lastName: user.lastName,
           email: emailLower,
-          password: user.password,
         };
 
         this.SetUserData(userData);
