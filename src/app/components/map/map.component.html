@@ -48,39 +48,48 @@
   </div>
 </div>
 
-<section class="map">
+<section class="map-box">
+  <!-- FILTERS-->
   <div class="filters-box">
     <div class="d-flex flex-wrap filters">
       <button
         class="btn btn-outline-secondary"
         type="button"
-        (click)="isVisible = !isVisible"
+        (click)="showPlaces('restaurant')"
       >
         <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
       </button>
-      <button class="btn btn-outline-secondary" type="button">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="showPlaces('museum')"
+      >
         <i class="bi bi-bank2"> &nbsp;</i>Musems
       </button>
-      <button class="btn btn-outline-secondary" type="button">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="showPlaces('cinema')"
+      >
         <i class="bi bi-film">&nbsp;</i>Cinema
       </button>
-      <button class="btn btn-outline-secondary" type="button">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="showPlaces('theatre')"
+      >
         <i class="bi bi-bank">&nbsp;</i>Theatres
       </button>
-      <button class="btn btn-outline-secondary" type="button">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="showPlaces('park')"
+      >
         <i class="bi bi-tree">&nbsp;</i>Parks
       </button>
     </div>
   </div>
-  <google-map
-    width="100%"
-    height="750px"
-    [scrollTop]="0"
-    [options]="options"
-    (mapClick)="isVisible = !isVisible"
-    ngx-google-places-autocomplete
-    #placesRef="ngx-places"
-  >
-  </google-map>
+  <!-- MAP -->
+  <div id="map"></div>
 </section>
 <app-favorite *ngIf="isVisible"></app-favorite>
