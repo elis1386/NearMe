@@ -23,6 +23,7 @@ export class MapComponent implements OnInit {
     },
     zoom: 15,
   };
+  placesResult: any = [];
 
   constructor(public httpClient: HttpClient) {}
 
@@ -35,7 +36,7 @@ export class MapComponent implements OnInit {
     this.infoWindow = new google.maps.InfoWindow();
   }
 
-  reset(){
+  reset() {
     this.map = new google.maps.Map(
       document.getElementById("map")!,
       this.options
@@ -43,7 +44,7 @@ export class MapComponent implements OnInit {
   }
 
   showPlaces(type: string) {
-    this.reset()
+    this.reset();
     const searchRequest: google.maps.places.PlaceSearchRequest = {
       type: type,
       radius: 1500,
@@ -58,6 +59,8 @@ export class MapComponent implements OnInit {
       }
 
       console.log(results);
+      this.placesResult = results;
+
       for (let i = 0; i < results.length!; i++) {
         const place = results[i];
         const marker = new google.maps.Marker({
