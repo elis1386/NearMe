@@ -9,6 +9,10 @@ import { SimpleChanges } from "@angular/core";
 export class ListComponent {
   @Input() placesList: any[] = [];
 
+  addToFavorites() {
+    // TODO: add to favorites logic here
+  }
+
   // add ratingArray value to objects so we can loop trough and add stars
   // does this everytime placesList changes
   ngOnChanges(changes: SimpleChanges) {
