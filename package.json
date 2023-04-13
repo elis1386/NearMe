@@ -16,11 +16,7 @@
     "@angular/core": "^15.0.0",
     "@angular/fire": "^7.5.0",
     "@angular/forms": "^15.0.0",
-<<<<<<< HEAD
-    "@angular/google-maps": "^15.2.5",
-=======
     "@angular/google-maps": "^15.2.6",
->>>>>>> develop
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
@@ -30,12 +26,10 @@
     "angular-google-places-autocomplete": "^0.2.9",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
-<<<<<<< HEAD
-    "firebase": "^9.19.1",
-=======
+
     "firebase": "^9.18.0",
     "ngx-google-places-autocomplete": "^2.0.5",
->>>>>>> develop
+
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
