@@ -41,6 +41,7 @@ main {
   margin-bottom: 0.5em;
 }
 
+
 @media only screen and (max-width: 768px) {
   .filters {
     gap: 0.8em 2.3rem;
@@ -51,6 +52,7 @@ main {
   .filters-box {
     display: none;
   }
+
   .mobile-dropdown {
     display: block;
     position: absolute;

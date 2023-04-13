@@ -36,6 +36,7 @@ import { AuthService } from "./services/auth.service";
 import { CommonModule } from "@angular/common";
 import { WeatherComponent } from "./components/weather/weather.component";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -3,7 +3,7 @@ import { Component, NgZone, OnInit } from "@angular/core";
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
-  styleUrls: ["./map.component.css"],
+  styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
   isVisible: boolean = false;
@@ -26,6 +26,7 @@ export class MapComponent implements OnInit {
   placesResult: any = [];
 
   constructor(public httpClient: HttpClient) {}
+
 
   ngOnInit() {
     this.map = new google.maps.Map(
@@ -77,7 +78,7 @@ export class MapComponent implements OnInit {
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
     const detailsRequest = {
       placeId: place.place_id!,
-      fields: ["name", "formatted_address"],
+      fields: ["name", "formatted_address", "photos", "rating", "opening_hours", "icon"],
     };
     this.service.getDetails(detailsRequest, (place, status) => {
       if (
@@ -89,15 +90,58 @@ export class MapComponent implements OnInit {
 
       console.log(place);
       const content = document.createElement("div");
+      content.style.width = "200px"
 
       const nameElement = document.createElement("h4");
       nameElement.textContent = place.name!;
+      // this.favoritePlace.title = place.name!;
       content.appendChild(nameElement);
+
+      if (place.photos) {
+        const placePhoto = document.createElement("img");
+        placePhoto.src = place.photos![0].getUrl();
+        content.appendChild(placePhoto);
+        placePhoto.style.width = "100%";
+        placePhoto.style.marginBottom = "5px";
+        // this.favoritePlace.img = place.photos![0].getUrl();
+      }
 
       const placeAddressElement = document.createElement("p");
       placeAddressElement.textContent = place.formatted_address!;
       content.appendChild(placeAddressElement);
+      // this.favoritePlace.address = place.formatted_address!;
 
+      const placeRatingElement = document.createElement("p");
+      placeRatingElement.textContent = 'Rating: '+place.rating!.toString();
+      placeRatingElement.style.fontWeight = "bold";
+      content.appendChild(placeRatingElement);
+      // this.favoritePlace.description = place.rating!.toString();
+
+      
+      if (place.opening_hours) {
+        const openHoursElement = document.createElement("div");
+        place.opening_hours!.weekday_text!.forEach(element => {
+        let text = document.createElement("p");
+        text.textContent += element;
+        openHoursElement.appendChild(text);
+      });
+        content.appendChild(openHoursElement);
+        // this.favoritePlace.description += openHoursElement.textContent;
+     }
+
+      const heartButton = document.createElement("a");
+      heartButton.id = "toggle-heart";
+      heartButton.textContent = "❤";
+      heartButton.style.fontSize = "20px";
+      heartButton.style.color = "lightgray";
+      heartButton.addEventListener("click", () => {
+        heartButton.style.color = "red";
+        // this.favoritePlaceList.push(place);
+        // console.log(this.favoritePlace)
+        // this.RequestsService.sendFavoritePlace(this.favoritePlace)
+      })
+      content.appendChild(heartButton);
+      
       this.infoWindow.setContent(content);
       this.infoWindow.open(this.map, marker);
     });

@@ -26,8 +26,10 @@
     "angular-google-places-autocomplete": "^0.2.9",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+
     "firebase": "^9.18.0",
     "ngx-google-places-autocomplete": "^2.0.5",
+
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
