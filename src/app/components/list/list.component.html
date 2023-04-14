@@ -1,5 +1,11 @@
 <div *ngIf="placesList.length; else noPlaces" class="d-flex flex-column gap-3">
   <div *ngFor="let place of placesList" class="card">
+    <ng-container *ngIf="place.photos"
+      ><img
+        src="{{ place.photos[0].getUrl() }}"
+        class="card-img-top"
+        alt="photo of the place"
+    /></ng-container>
     <div class="card-body">
       <div class="d-flex flex-row justify-content-between">
         <h5 class="card-title">{{ place.name }}</h5>
