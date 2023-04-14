@@ -61,7 +61,17 @@ Then we switch to our development branch. Now to sync with the develop branch
 
 
 # deploy
-
+Our project now is deploying on firebase hosting.
+The working link of our project - https://nearme-b6f9d.web.app/
+The new deploying version you can do from main 
+(but you should be sure that all last changes on the main branch and you chek that "ng serve"  working in correct way),
+than following next commands:
+- ng build
+- firebase deploy
+ 
+if you want to chek how project is working before deployng new version do also you can do it on "develop" bracn:
+  -firebase emulators:start
+ 
 # firebase
 
 # tests
