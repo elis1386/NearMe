@@ -1,0 +1,40 @@
+<main class="form-signin">
+    <form [formGroup]="signInForm" (ngSubmit)="signIn()">
+      <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
+      <div class="form-floating mb-4">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          formControlName="email"
+          required=""
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mb-4">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          formControlName="password"
+          required=""
+        />
+        <label for="floatingPassword">Password</label>
+        <p
+        *ngIf="
+          this.signInForm.get('password')?.invalid &&
+          this.signInForm.get('password')?.touched
+        "
+      >
+        <small class="text-danger">Password is required and should include Upper letter and number</small>
+      </p>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label> <input type="checkbox" class="form-check-input"/> Remember me </label>
+      </div>
+      <button class="w-100 btn btn-lg" type="submit">Sign in</button>
+    </form>
+    <p class="mt-4 text-align-center">New to NearMe? <a [routerLink]="['/register-user']">Create an account </a></p>
+  </main>
+  

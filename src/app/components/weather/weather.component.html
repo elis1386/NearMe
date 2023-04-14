@@ -1,0 +1,18 @@
+<div *ngIf="weatherInfo" class="row flex-nowrap overflow-auto gap-2 p-1 m-1">
+  <div
+    *ngFor="let weather of weatherInfo.weatherArr"
+    [ngStyle]="{ height: '60px', width: '100px' }"
+    class="text-center p-0 bg-light rounded"
+  >
+    <img
+      [ngStyle]="{ height: '30px', width: '30px' }"
+      [src]="weather.weather[0].icon"
+      alt="weather icon"
+    />
+    <small class="mb-0">{{ weatherInfo.city }}</small>
+    <div class="mb-0">
+      <small>{{ weather.main.temp }}&#176;C</small> |
+      <small>{{ weather.dt_txt }}</small>
+    </div>
+  </div>
+</div>

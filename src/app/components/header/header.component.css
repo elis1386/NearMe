@@ -1,36 +1,69 @@
-header{
-    margin-top: 1rem;
+header {
+  margin-top: 1rem;
+  height: 80px;
 }
-.logo{
-    width: 20%;
+.logo {
+
+  width: 25%;
+
 }
-a{
-    width: 50%;
-    margin: 1rem;
-}
-.btn{
-    background-color: var(--main-color);
-    color: white;
-}
-.text-end{
+a {
+  width: 50%;
   margin: 1rem;
 }
+.signUp-btn {
+  background-color: var(--signUp-btn);
+  color: white;
+}
+.btn {
+  background-color: var(--main-color);
+  color: white;
+}
+.signUp-btn {
+  background-color: var(--signUp-btn);
+  color: white;
+}
+.btn {
+  background-color: var(--main-color);
+  color: white;
+}
 
+.text-end {
+  margin: 1rem;
+}
+.bi-person-circle,
+.bi-cloud-fill {
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+.dropdown-toggle::after {
+  color: var(--main-color);
+}
 
 @media only screen and (max-width: 768px) {
-    .logo {
-      width: 50%;
-    }
+  .bi-person-circle,
+  .bi-cloud-fill {
+    font-size: 2rem;
   }
-  
-  @media only screen and (max-width: 425px) {
-    .logo {
-        width: 70%;
-      }
-    .banklogin{
-      font-size: 1rem;
-    }
-    header{
-        margin-top: .8em;
-    }
+  .dropdown-toggle::after {
+    font-size: 2rem;
   }
+  .logo {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  header {
+    margin-top: 0.8em;
+  }
+  .logo {
+    width: 90%;
+    margin-bottom: 1rem;
+
+  }
+}
+
+.laptop-weather {
+  max-width: 400px;
+}

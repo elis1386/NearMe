@@ -1,73 +1,41 @@
-<section class="d-flex gap-4 favorite">
+<section *ngIf="favorites.length; else noFavorites" class="row overflow-auto">
+  <div
+    *ngFor="let favorite of favorites"
+    class="col-12 col-md-6 col-xl-4 col-xxl-3"
+  >
+    <div class="card mb-3">
+      <img
+        [src]="favorite.img"
+        class="card-img-top"
+        alt="Favorite place image"
+      />
 
-<div class="card mb-3">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Beef & Grill</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Kasper</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Kasper</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Friend's</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img [src]="randomPhoto" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">Ravintola Mexicano</h5>
-      <p class="card-text">From 12:00 till 23:00</p>
-      <div class="stars">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
+      <div class="card-body">
+        <h5 class="card-title">{{ favorite.title }}</h5>
+        <p class="card-text">{{ favorite.description }}</p>
+        <div class="stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <button
+          (click)="removeFavorite(favorite.title)"
+          type="button"
+          class="btn btn-danger"
+        >
+          <i class="bi bi-trash3-fill"></i>
+          Delete
+        </button>
       </div>
     </div>
   </div>
 </section>
+<!-- if no favorites then show this -->
+<ng-template #noFavorites>
+  <div class="alert alert-primary d-flex gap-2 align-items-center" role="alert">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    <div class="no-favorites">No favorites found</div>
+  </div>
+</ng-template>

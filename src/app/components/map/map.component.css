@@ -1,23 +1,69 @@
-.row{
-    overflow: scroll;
-    height: 650px;
+main {
+  margin-top: -3%;
 }
-.map{
-    position: relative; 
+#map {
+  width: 100%;
+  height: 750px;
 }
-.filters{
-    gap: 1.5rem;
+.map-box {
+  position: relative;
+}
+.filters-box {
+  position: absolute;
+  top: 2%;
+  z-index: 1;
+  margin: 0.5em;
+}
+.filters {
+  gap: 1.5rem;
+}
+.btn:hover {
+  background-color: white;
+  color: var(--main-text);
+  border: 1px solid var(--main-text);
+}
+.btn {
+  background: #aaa7a4;
+  padding: 0.7em;
+  border-radius: 1rem;
+  border: none;
+  color: white;
+  font-weight: 500;
+}
+.mobile-dropdown {
+  display: none;
+}
+.dropdown-menu {
+  background: none;
+  border: none;
+}
+.dropdown-item {
+  margin-bottom: 0.5em;
 }
 
+
 @media only screen and (max-width: 768px) {
-    .filters{
-        gap: 1rem;
-    }
-   
+  .filters {
+    gap: 0.8em 2.3rem;
+    margin-bottom: 0.5em;
   }
-  @media only screen and (max-width: 425px) {
-    .filters{
-        gap: .6em;
-    }
-   
+}
+@media only screen and (max-width: 425px) {
+  .filters-box {
+    display: none;
   }
+
+  .mobile-dropdown {
+    display: block;
+    position: absolute;
+    top: 15%;
+    z-index: 1;
+    width: 100%;
+  }
+}
+
+.show-list-btn {
+  position: absolute;
+  top: 30%;
+  z-index: 20;
+}

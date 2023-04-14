@@ -1,41 +1,16 @@
 .row {
-  overflow: scroll;
-  height: 700px;
-}
-.main {
-  height: auto;
+  height: 600px;
 }
 
-.card {
-  width: 250px;
-  height: 250px;
-  padding: .5em;
-}
-.card-body{
-    height: 200px;
-}
 .card img {
-  height: 100px;
   object-fit: cover;
+  width: 100%;
+  max-height: 150px;
 }
+
 .stars {
   margin-bottom: 1rem;
 }
 .bi-star-fill {
   color: #ff904d;
 }
-.favorite {
-  position: absolute;
-  top: 60%;
-} @media only screen and (max-width: 768px) {
-  .favorite {
-    top: 50%;
-  }
-  .card{
-    height: 235px;
-  }
-  .card-body{
-    padding: .5em;
-    height: auto;
-  }
-} 

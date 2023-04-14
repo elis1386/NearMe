@@ -1,26 +1,33 @@
 <footer id="footer" class="footer">
-      <div
-        class="d-flex align-items-center justify-content-center"
-      >
-        <ul class="nav col-12 my-2 justify-content-around my-md-0">
-          <li class="d-flex flex-column gap-4">
-            <a href="#" class="links nav-link  d-flex flex-column align-items-center">
-              <i class="bi bi-map"></i>
-              Map
-            </a>
-          </li>
-          <li class="d-flex flex-column gap-4">
-            <a href="#" class="links nav-link  d-flex flex-column align-items-center">
-              <i class="bi bi-list"></i>
-              List
-            </a>
-          </li>
-          <li class="d-flex flex-column gap-4">
-            <a href="#" class="links nav-link d-flex flex-column align-items-center">
-              <i class="bi bi-heart"></i>
-              Favorite
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <ul class="nav col-12 my-2 justify-content-around my-md-0">
+      <li class="d-flex flex-column gap-4">
+        <a
+          [routerLink]="['map']"
+          class="links nav-link d-flex flex-column align-items-center"
+        >
+          <i class="bi bi-map"></i>
+          Map
+        </a>
+      </li>
+      <li class="d-flex flex-column gap-4">
+        <a
+          href="#"
+          class="links nav-link d-flex flex-column align-items-center"
+        >
+          <i class="bi bi-list"></i>
+          List
+        </a>
+      </li>
+      <li class="d-flex flex-column gap-4">
+        <a
+          routerLink="/favorite"
+          class="links nav-link d-flex flex-column align-items-center"
+        >
+          <i class="bi bi-heart"></i>
+          Favorite
+        </a>
+      </li>
+    </ul>
+  </div>
 </footer>

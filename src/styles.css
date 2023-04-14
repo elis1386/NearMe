@@ -3,6 +3,9 @@
 
 :root {
   --main-color: rgb(121, 83, 178);
+  --signUp-btn: #ff904d;
   --main-text: #504b43;
 }
-
+.gmnoprint{
+  display: none;
+}
