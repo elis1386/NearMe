@@ -62,9 +62,3 @@ main {
     width: 100%;
   }
 }
-
-.show-list-btn {
-  position: absolute;
-  top: 30%;
-  z-index: 20;
-}
