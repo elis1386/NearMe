@@ -1,5 +1,5 @@
 <!-- mobile filters and weather view -->
-<div class="mobile-dropdown">
+<!-- <div class="mobile-dropdown">
   <div class="dropdown d-flex align-items-center gap-2">
     <button
       class="btn btn-secondary-outline dropdown-toggle ms-1 w-50"
@@ -16,16 +16,16 @@
           type="button"
           (click)="showPlaces('restaurants')"
         >
-          <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+          <i class="bi bi-menu-up"> &nbsp;</i>Events
         </button>
       </li>
       <li>
         <button
           class="btn btn-outline-secondary dropdown-item"
           type="button"
-          (click)="showPlaces('musems')"
+          (click)="showPlaces('all')"
         >
-          <i class="bi bi-bank2"> &nbsp;</i>Musems
+          <i class="bi bi-bank2"> &nbsp;</i>Places
         </button>
       </li>
 
@@ -35,54 +35,108 @@
           type="button"
           (click)="showPlaces('theatres')"
         >
-          <i class="bi bi-bank">&nbsp;</i>Theatres
-        </button>
-      </li>
-      <li>
-        <button
-          class="btn btn-outline-secondary dropdown-item"
-          type="button"
-          (click)="showPlaces('parks')"
-        >
-          <i class="bi bi-tree">&nbsp;</i>Parks
+          <i class="bi bi-bank">&nbsp;</i>Activities
         </button>
       </li>
     </ul>
   </div>
-</div>
+</div> -->
 
 <section class="map-box">
   <!-- FILTERS-->
   <div class="filters-box">
-    <div class="d-flex flex-wrap filters">
+    <div class="btn-group">
       <button
-        class="btn btn-outline-secondary"
         type="button"
-        (click)="showPlaces('restaurant')"
+        class="btn dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+        Places
       </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('restaurants')"
+            >restaurants</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('museum')"
+            >Musems</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('theatre')"
+            >Theatres</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Parks</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group">
       <button
-        class="btn btn-outline-secondary"
         type="button"
-        (click)="showPlaces('museum')"
+        class="btn dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <i class="bi bi-bank2"> &nbsp;</i>Musems
+        Activities
       </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Hiking</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Amusement park</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Zoo</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Rope park</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group">
       <button
-        class="btn btn-outline-secondary"
         type="button"
-        (click)="showPlaces('theatre')"
+        class="btn dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <i class="bi bi-bank">&nbsp;</i>Theatres
+        Events
       </button>
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="showPlaces('park')"
-      >
-        <i class="bi bi-tree">&nbsp;</i>Parks
-      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('music')"
+            >Music</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('sport')"
+            >Sport</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('exhibition')"
+            >Exhibition</a
+          >
+        </li>
+      </ul>
     </div>
   </div>
   <!-- sidebar list button -->
