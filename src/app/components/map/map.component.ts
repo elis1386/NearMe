@@ -47,7 +47,7 @@ export class MapComponent implements OnInit {
     this.reset();
     const searchRequest: google.maps.places.PlaceSearchRequest = {
       type: type,
-      radius: 1500,
+      radius: 1000,
       location: this.options.center!,
     };
     this.service.nearbySearch(searchRequest, (results, status) => {
