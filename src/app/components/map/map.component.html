@@ -1,47 +1,3 @@
-<!-- mobile filters and weather view -->
-<!-- <div class="mobile-dropdown">
-  <div class="dropdown d-flex align-items-center gap-2">
-    <button
-      class="btn btn-secondary-outline dropdown-toggle ms-1 w-50"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      filters for searching
-    </button>
-    <ul class="dropdown-menu">
-      <li>
-        <button
-          class="btn btn-outline-secondary dropdown-item"
-          type="button"
-          (click)="showPlaces('restaurants')"
-        >
-          <i class="bi bi-menu-up"> &nbsp;</i>Events
-        </button>
-      </li>
-      <li>
-        <button
-          class="btn btn-outline-secondary dropdown-item"
-          type="button"
-          (click)="showPlaces('all')"
-        >
-          <i class="bi bi-bank2"> &nbsp;</i>Places
-        </button>
-      </li>
-
-      <li>
-        <button
-          class="btn btn-outline-secondary dropdown-item"
-          type="button"
-          (click)="showPlaces('theatres')"
-        >
-          <i class="bi bi-bank">&nbsp;</i>Activities
-        </button>
-      </li>
-    </ul>
-  </div>
-</div> -->
-
 <section class="map-box">
   <!-- FILTERS-->
   <div class="filters-box">
@@ -58,7 +14,7 @@
         <li>
           <a
             class="btn btn-outline-secondary dropdown-item"
-            (click)="showPlaces('restaurants')"
+            (click)="showPlaces('restaurant')"
             >restaurants</a
           >
         </li>
@@ -68,7 +24,7 @@
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('theatre')"
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('theater')"
             >Theatres</a
           >
         </li>
@@ -95,12 +51,12 @@
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('amusement')"
             >Amusement park</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('zoo')"
             >Zoo</a
           >
         </li>
