@@ -3,7 +3,7 @@ main {
 }
 #map {
   width: 100%;
-  height: 550px;
+  height: 750px;
 }
 .map-box {
   position: relative;
@@ -44,16 +44,15 @@ main {
 
 
 @media only screen and (max-width: 768px) {
+  #map {
+    height: 550px;
+  }
   .filters {
     gap: 0.8em 2.3rem;
     margin-bottom: 0.5em;
   }
 }
 @media only screen and (max-width: 425px) {
- /*  .filters-box {
-    display: none;
-  } */
-
   .mobile-dropdown {
     display: block;
     position: absolute;
@@ -67,4 +66,10 @@ main {
   position: absolute;
   top: 30%;
   z-index: 20;
+}
+
+@media only screen and (max-width: 375px) {
+  #map {
+    height: 500px;
+  }
 }
