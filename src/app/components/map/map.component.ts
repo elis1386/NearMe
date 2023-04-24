@@ -23,6 +23,7 @@ export class MapComponent implements OnInit {
     zoom: 15,
   };
   placesResult: any = [];
+  filterTerm!: string
 
   constructor(public httpClient: HttpClient) {}
 

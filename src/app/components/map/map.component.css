@@ -10,12 +10,29 @@ main {
 }
 .filters-box {
   position: absolute;
+  left: 2%;
   top: 2%;
   z-index: 1;
   margin: 0.5em;
 }
 .filters {
   gap: 1.5rem;
+}
+.search {
+  background: #fff;
+  outline: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition-duration: 0.3s;
+  border: none;
+  margin-right: 1rem;
+  color: var(--main-text);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
+  padding-left: 25px;
+}
+.search:hover {
+  background-color: rgb(243, 243, 243);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0px rgba(0, 0, 0, 0.02);
 }
 .btn:hover {
   background-color: rgb(243, 243, 243);
@@ -42,7 +59,6 @@ main {
   margin-bottom: 0.5em;
 }
 
-
 @media only screen and (max-width: 768px) {
   #map {
     height: 550px;
@@ -60,6 +76,18 @@ main {
     z-index: 1;
     width: 100%;
   }
+  .filters-box {
+    flex-wrap: wrap;
+  }
+
+  .search {
+    width: 100%;
+    height: 40px;
+  }
+
+  .btn-group {
+    margin-top: 1rem;
+  }
 }
 
 .show-list-btn {
@@ -70,6 +98,12 @@ main {
 
 @media only screen and (max-width: 375px) {
   #map {
-    height: 500px;
+    height: 580px;
+  }
+  .search {
+    height: 30px;
+  }
+  .btn {
+    padding: 0.2em 0.7em;
   }
 }
