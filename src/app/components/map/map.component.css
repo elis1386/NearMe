@@ -23,17 +23,18 @@ main {
   gap: 1.5rem;
 }
 .btn:hover {
-  background-color: white;
+  background-color: rgb(243, 243, 243);
   color: var(--main-text);
-  border: 1px solid var(--main-text);
+  box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 .btn {
-  background: #aaa7a4;
+  background: white;
   padding: 0.7em;
   border-radius: 1rem;
   border: none;
-  color: white;
+  color: var(--main-text);
   font-weight: 500;
+  margin-right: 1rem;
 }
 .mobile-dropdown {
   display: none;
@@ -52,16 +53,15 @@ main {
 }
 
 @media only screen and (max-width: 768px) {
+  #map {
+    height: 550px;
+  }
   .filters {
     gap: 0.8em 2.3rem;
     margin-bottom: 0.5em;
   }
 }
 @media only screen and (max-width: 425px) {
-  .filters-box {
-    display: none;
-  }
-
   .mobile-dropdown {
     display: block;
     position: absolute;
@@ -70,3 +70,16 @@ main {
     width: 100%;
   }
 }
+
+.show-list-btn {
+  position: absolute;
+  top: 30%;
+  z-index: 20;
+}
+
+@media only screen and (max-width: 375px) {
+  #map {
+    height: 500px;
+  }
+}
+

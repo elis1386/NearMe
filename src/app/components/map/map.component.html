@@ -1,140 +1,103 @@
-
-<!-- mobile filters and weather view -->
-<div class="mobile-dropdown">
-  <div class="dropdown d-flex align-items-center gap-2">
-    <button
-      class="btn btn-secondary-outline dropdown-toggle ms-1 w-50"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      filters for searching
-    </button>
-    <ul class="dropdown-menu">
-      <li>
-        <button
-          class="btn btn-outline-secondary dropdown-item"
-          type="button"
-          (click)="isVisible = !isVisible"
-        >
-          <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-bank2"> &nbsp;</i>Musems
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-film">&nbsp;</i>Cinema
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-bank">&nbsp;</i>Theatres
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-tree">&nbsp;</i>Parks
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-secondary dropdown-item" type="button">
-          <i class="bi bi-shop">&nbsp;</i>Shops
-        </button>
-      </li>
-    </ul>
-  </div>
-</div>
-
 <section class="map-box">
   <!-- FILTERS-->
   <div class="filters-box">
-    <div class="d-flex flex-wrap filters">
+    <div class="btn-group">
       <button
-        class="btn btn-outline-secondary"
         type="button"
-        (click)="showPlaces('restaurant')"
+        class="btn dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <i class="bi bi-menu-up"> &nbsp;</i>Restaurants
+        Places
       </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('restaurant')"
+            >restaurants</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('museum')"
+            >Musems</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('theater')"
+            >Theatres</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Parks</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group">
       <button
-        class="btn btn-outline-secondary"
         type="button"
-        (click)="showPlaces('museum')"
+        class="btn dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <i class="bi bi-bank2"> &nbsp;</i>Musems
+        Activities
       </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Hiking</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('amusement')"
+            >Amusement park</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('zoo')"
+            >Zoo</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+            >Rope park</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group">
       <button
-        class="btn btn-outline-secondary"
         type="button"
-        (click)="showPlaces('cinema')"
+        class="btn dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <i class="bi bi-film">&nbsp;</i>Cinema
+        Events
       </button>
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="showPlaces('theatre')"
-      >
-        <i class="bi bi-bank">&nbsp;</i>Theatres
-      </button>
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        (click)="showPlaces('park')"
-      >
-        <i class="bi bi-tree">&nbsp;</i>Parks
-      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('music')"
+            >Music</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('sport')"
+            >Sport</a
+          >
+        </li>
+        <li>
+          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('exhibition')"
+            >Exhibition</a
+          >
+        </li>
+      </ul>
     </div>
   </div>
   <!-- sidebar list button -->
-  <div class="show-list-btn">
-    <button
-      class="btn rounded-start shadow-lg"
-      [ngStyle]="{
-        background: 'white',
-        color: 'white',
-        border: '1px solid black'
-      }"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasWithBothOptions"
-      aria-controls="offcanvasWithBothOptions"
-    >
-      <i
-        [ngStyle]="{ background: 'white', color: 'black' }"
-        class="bi bi-arrow-bar-right"
-      ></i>
-    </button>
-    <div
-      class="offcanvas offcanvas-start"
-      data-bs-scroll="true"
-      tabindex="-1"
-      id="offcanvasWithBothOptions"
-      aria-labelledby="offcanvasWithBothOptionsLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-          Places of interest
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <app-list [placesList]="placesResult"></app-list>
-      </div>
-    </div>
-  </div>
+  <app-sidebar [placesList]="placesResult"></app-sidebar>
   <!-- MAP -->
   <div id="map"></div>
 
 </section>
-<app-favorite *ngIf="isVisible"></app-favorite>
-
