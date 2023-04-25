@@ -1,15 +1,6 @@
 <section class="map-box">
   <!-- FILTERS-->
   <div class="filters-box d-flex">
-    <!-- SEARCH BAR -->
-    <input
-      id="input"
-      type="search"
-      class="search col-6"
-      placeholder="Search..."
-      aria-label="Search"
-      [(ngModel)]="filterTerm"
-    />
     <div class="btn-group">
       <button
         type="button"
@@ -126,8 +117,6 @@
   </div>
   <!-- sidebar list button -->
   <app-sidebar [placesList]="placesResult"></app-sidebar>
-  <!-- INPUT -->
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
   <!-- MAP -->
   <div id="map"></div>
 </section>

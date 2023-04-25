@@ -23,10 +23,8 @@ export class MapComponent implements OnInit {
     zoom: 15,
   };
   placesResult: any = [];
-  filterTerm!: string
 
   constructor(public httpClient: HttpClient) {}
-
 
   ngOnInit() {
     this.map = new google.maps.Map(
@@ -78,7 +76,7 @@ export class MapComponent implements OnInit {
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
     const detailsRequest = {
       placeId: place.place_id!,
-      fields: ["name", "formatted_address", "photos", "rating", "opening_hours", "icon"],
+      fields: ["name", "formatted_address", "photos", "rating", "icon"],
     };
     this.service.getDetails(detailsRequest, (place, status) => {
       if (
@@ -88,9 +86,9 @@ export class MapComponent implements OnInit {
         return;
       }
 
-      console.log(place);
+      console.log(detailsRequest);
       const content = document.createElement("div");
-      content.style.width = "200px"
+      content.style.width = "200px";
 
       const nameElement = document.createElement("h4");
       nameElement.textContent = place.name!;
@@ -112,22 +110,21 @@ export class MapComponent implements OnInit {
       // this.favoritePlace.address = place.formatted_address!;
 
       const placeRatingElement = document.createElement("p");
-      placeRatingElement.textContent = 'Rating: '+place.rating!.toString();
+      placeRatingElement.textContent = "Rating: " + place.rating!.toString();
       placeRatingElement.style.fontWeight = "bold";
       content.appendChild(placeRatingElement);
       // this.favoritePlace.description = place.rating!.toString();
 
-      
       if (place.opening_hours) {
         const openHoursElement = document.createElement("div");
-        place.opening_hours!.weekday_text!.forEach(element => {
-        let text = document.createElement("p");
-        text.textContent += element;
-        openHoursElement.appendChild(text);
-      });
+        place.opening_hours!.weekday_text!.forEach((element) => {
+          let text = document.createElement("p");
+          text.textContent += element;
+          openHoursElement.appendChild(text);
+        });
         content.appendChild(openHoursElement);
         // this.favoritePlace.description += openHoursElement.textContent;
-     }
+      }
 
       const heartButton = document.createElement("a");
       heartButton.id = "toggle-heart";
@@ -139,9 +136,9 @@ export class MapComponent implements OnInit {
         // this.favoritePlaceList.push(place);
         // console.log(this.favoritePlace)
         // this.RequestsService.sendFavoritePlace(this.favoritePlace)
-      })
+      });
       content.appendChild(heartButton);
-      
+
       this.infoWindow.setContent(content);
       this.infoWindow.open(this.map, marker);
     });
