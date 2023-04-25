@@ -14,7 +14,7 @@
 }
 @media only screen and (min-width: 1024px) {
   .footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     width: 100%;
     background-color: white;
