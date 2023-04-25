@@ -67,3 +67,27 @@ main {
   top: 30%;
   z-index: 20;
 }
+
+.showInfo {
+  width: 200px;  
+  height: 300px;
+}
+  
+.info-title {
+ font-weight: 600;
+}
+
+.info-photo {
+  width: 100%;
+  overflow: hidden;
+  object-fit: contain;
+}
+  
+.info-address {
+  font-size: 1rem;
+  }
+  
+.info-rating {
+  font-size: 1rem;
+  font-weight: 600;
+  }
