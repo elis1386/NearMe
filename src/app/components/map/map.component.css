@@ -5,6 +5,11 @@ main {
   width: 100%;
   height: 750px;
 }
+#map .gm-style-iw,
+.gm-style {
+  width: 200px;
+  height: 300px;
+}
 .map-box {
   position: relative;
 }
@@ -41,7 +46,11 @@ main {
 .dropdown-item {
   margin-bottom: 0.5em;
 }
-
+.show-list-btn {
+  position: absolute;
+  top: 30%;
+  z-index: 20;
+}
 
 @media only screen and (max-width: 768px) {
   #map {
@@ -73,3 +82,4 @@ main {
     height: 500px;
   }
 }
+

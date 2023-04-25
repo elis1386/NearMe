@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientJsonpModule } from "@angular/common/http";
-import { Component, NgZone, OnInit } from "@angular/core";
+import { Component, Input, NgZone, OnInit } from "@angular/core";
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
@@ -23,9 +23,9 @@ export class MapComponent implements OnInit {
     zoom: 15,
   };
   placesResult: any = [];
+  current_place: any = 0;
 
   constructor(public httpClient: HttpClient) {}
-
 
   ngOnInit() {
     this.map = new google.maps.Map(
@@ -58,8 +58,8 @@ export class MapComponent implements OnInit {
         return;
       }
 
-      console.log(results);
       this.placesResult = results;
+      console.log(this.placesResult);
 
       for (let i = 0; i < results.length!; i++) {
         const place = results[i];
@@ -77,8 +77,10 @@ export class MapComponent implements OnInit {
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
     const detailsRequest = {
       placeId: place.place_id!,
-      fields: ["name", "formatted_address", "photos", "rating", "opening_hours", "icon"],
+      fields: ["name", "formatted_address", "photos", "rating", "icon"],
     };
+    this.current_place = place;
+    console.log(place);
     this.service.getDetails(detailsRequest, (place, status) => {
       if (
         status !== google.maps.places.PlacesServiceStatus.OK ||
@@ -86,62 +88,25 @@ export class MapComponent implements OnInit {
       ) {
         return;
       }
-
-      console.log(place);
       const content = document.createElement("div");
-      content.style.width = "200px"
+      content.innerHTML += `
+      <section class="show-info" *ngIf="current_place !== 0">
+      <h4 class="info-title">${this.current_place.name}</h4>
+      <img class="info-photo" src="${this.current_place.photos[0].getUrl()}" alt=""  />
+      <p class="info-address">${this.current_place.vicinity}</p>
+      <div class="rating">
+      <p class="info-rating">${this.current_place.rating}</p>
+      <figure class="favorite">
+        <a><i class="bi bi-heart"></i></a>
+      </figure>
+      </div>
+      </section>
+      `;
 
-      const nameElement = document.createElement("h4");
-      nameElement.textContent = place.name!;
-      // this.favoritePlace.title = place.name!;
-      content.appendChild(nameElement);
-
-      if (place.photos) {
-        const placePhoto = document.createElement("img");
-        placePhoto.src = place.photos![0].getUrl();
-        content.appendChild(placePhoto);
-        placePhoto.style.width = "100%";
-        placePhoto.style.marginBottom = "5px";
-        // this.favoritePlace.img = place.photos![0].getUrl();
-      }
-
-      const placeAddressElement = document.createElement("p");
-      placeAddressElement.textContent = place.formatted_address!;
-      content.appendChild(placeAddressElement);
-      // this.favoritePlace.address = place.formatted_address!;
-
-      const placeRatingElement = document.createElement("p");
-      placeRatingElement.textContent = 'Rating: '+place.rating!.toString();
-      placeRatingElement.style.fontWeight = "bold";
-      content.appendChild(placeRatingElement);
-      // this.favoritePlace.description = place.rating!.toString();
-
-      
-      if (place.opening_hours) {
-        const openHoursElement = document.createElement("div");
-        place.opening_hours!.weekday_text!.forEach(element => {
-        let text = document.createElement("p");
-        text.textContent += element;
-        openHoursElement.appendChild(text);
+      this.infoWindow = new google.maps.InfoWindow({
+        content: content,
       });
-        content.appendChild(openHoursElement);
-        // this.favoritePlace.description += openHoursElement.textContent;
-     }
-
-      const heartButton = document.createElement("a");
-      heartButton.id = "toggle-heart";
-      heartButton.textContent = "❤";
-      heartButton.style.fontSize = "20px";
-      heartButton.style.color = "lightgray";
-      heartButton.addEventListener("click", () => {
-        heartButton.style.color = "red";
-        // this.favoritePlaceList.push(place);
-        // console.log(this.favoritePlace)
-        // this.RequestsService.sendFavoritePlace(this.favoritePlace)
-      })
-      content.appendChild(heartButton);
-      
-      this.infoWindow.setContent(content);
+      /*   this.infoWindow.setContent(content); */
       this.infoWindow.open(this.map, marker);
     });
   }
