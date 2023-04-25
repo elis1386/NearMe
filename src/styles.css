@@ -6,6 +6,33 @@
   --signUp-btn: #ff904d;
   --main-text: #504b43;
 }
-.gmnoprint{
+.gmnoprint {
   display: none;
 }
+.gm-style img {
+  max-width: 200px;
+}
+.gm-style-iw,
+.gm-style-iw-c {
+  width: 200px;
+  height: 300px;
+}
+.rating {
+  display: flex;
+  justify-content: space-between;
+}
+.info-address{
+  font-size: 1.2rem;
+}
+.info-rating{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.info-photo{
+  margin-bottom: .5rem;
+}
+.bi-heart{
+  font-size: 1.4rem;
+  color: red;
+}
+
