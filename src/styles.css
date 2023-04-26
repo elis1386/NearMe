@@ -14,8 +14,8 @@
 }
 .gm-style-iw,
 .gm-style-iw-c {
-  width: 200px;
-  height: 300px;
+  width: 230px;
+  height: auto;
 }
 .rating {
   display: flex;
@@ -30,9 +30,17 @@
 }
 .info-photo{
   margin-bottom: .5rem;
+  width: 200px;
 }
-.bi-heart{
-  font-size: 1.4rem;
+.favorite{
+  font-size: 1rem;
   color: red;
+  border: 1px solid red;
+  background-color: white;
+}
+.favorite:hover{
+  color: white;
+  background-color: red;
+
 }
 

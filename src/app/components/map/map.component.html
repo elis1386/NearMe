@@ -1,6 +1,6 @@
 <section class="map-box">
   <!-- FILTERS-->
-  <div class="filters-box">
+  <div class="filters-box d-flex">
     <div class="btn-group">
       <button
         type="button"
@@ -19,17 +19,23 @@
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('museum')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('museum')"
             >Musems</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('theater')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('theater')"
             >Theatres</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('park')"
             >Parks</a
           >
         </li>
@@ -46,22 +52,30 @@
       </button>
       <ul class="dropdown-menu">
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('park')"
             >Hiking</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('amusement')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('amusement')"
             >Amusement park</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('zoo')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('zoo')"
             >Zoo</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('park')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('park')"
             >Rope park</a
           >
         </li>
@@ -78,17 +92,23 @@
       </button>
       <ul class="dropdown-menu">
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('music')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('music')"
             >Music</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('sport')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('sport')"
             >Sport</a
           >
         </li>
         <li>
-          <a class="btn btn-outline-secondary dropdown-item" (click)="showPlaces('exhibition')"
+          <a
+            class="btn btn-outline-secondary dropdown-item"
+            (click)="showPlaces('exhibition')"
             >Exhibition</a
           >
         </li>
@@ -99,5 +119,6 @@
   <app-sidebar [placesList]="placesResult"></app-sidebar>
   <!-- MAP -->
   <div id="map"></div>
+
 
 </section>

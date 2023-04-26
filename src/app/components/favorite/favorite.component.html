@@ -1,18 +1,17 @@
-<section *ngIf="favorites.length; else noFavorites" class="row overflow-auto">
+<!-- <section *ngIf="favorites.length; else noFavorites" class="row overflow-auto"> -->
   <div
-    *ngFor="let favorite of favorites"
     class="col-12 col-md-6 col-xl-4 col-xxl-3"
   >
     <div class="card mb-3">
       <img
-        [src]="favorite.img"
+        [src]=""
         class="card-img-top"
         alt="Favorite place image"
       />
 
       <div class="card-body">
-        <h5 class="card-title">{{ favorite.title }}</h5>
-        <p class="card-text">{{ favorite.description }}</p>
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
         <div class="stars">
           <i class="bi bi-star-fill"></i>
           <i class="bi bi-star-fill"></i>
@@ -21,7 +20,6 @@
           <i class="bi bi-star-fill"></i>
         </div>
         <button
-          (click)="removeFavorite(favorite.title)"
           type="button"
           class="btn btn-danger"
         >
@@ -31,7 +29,7 @@
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->
 <!-- if no favorites then show this -->
 <ng-template #noFavorites>
   <div class="alert alert-primary d-flex gap-2 align-items-center" role="alert">

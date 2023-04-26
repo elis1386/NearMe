@@ -15,6 +15,7 @@ main {
 }
 .filters-box {
   position: absolute;
+  left: 2%;
   top: 2%;
   z-index: 1;
   margin: 0.5em;
@@ -79,7 +80,6 @@ main {
 
 @media only screen and (max-width: 375px) {
   #map {
-    height: 500px;
+    height: 580px;
   }
 }
-

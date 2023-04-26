@@ -1,6 +1,8 @@
 export interface Favorite {
-  img: string;
-  title: string;
-  description: string;
-  address: string;
+  name: string;
+  vicinity: string;
+  rating: string;
+  photos: any;
+  place_id: string
+  userId: string
 }
