@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/compat/firestore";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Favorite } from "src/app/models/favorite";
 import firebase from "firebase/compat/app";
 import { collection, collectionData } from "@angular/fire/firestore";
@@ -37,7 +37,7 @@ export class RequestsService {
       );
   }
 
-  getAllPlaces() {
+/*   getAllPlaces() {
     this.firestore
       .collection("favorite")
       .get()
@@ -46,5 +46,17 @@ export class RequestsService {
           console.log(doc.data());
         });
       });
+  } */
+
+  getAllPlaces(): Observable<Favorite[]> {
+    return this.firestore.collection("favorite").get().pipe(
+      map((querySnapshot) => {
+        const places: any[] = [];
+        querySnapshot.forEach((doc) => {
+          places.push(doc.data());
+        });
+        return places;
+      })
+    );
   }
 }
