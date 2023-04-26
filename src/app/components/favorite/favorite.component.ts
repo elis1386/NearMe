@@ -8,7 +8,7 @@ import { Favorite } from "src/app/models/favorite";
 })
 export class FavoriteComponent {
   /* favorites array just for testing purpose */
-  public favorites: Favorite[] = [
+/*   public favorites: Favorite[] = [
     {
       img: "https://source.unsplash.com/random/?restaurant/300x100",
       title: "Title 1",
@@ -45,15 +45,15 @@ export class FavoriteComponent {
       description: "Description about place here",
       address: "Address 5 16A",
     },
-  ];
+  ]; */
 
   isVisable: boolean = false;
 
-  removeFavorite(title: string) {
+ /*  removeFavorite(title: string) {
     // TODO: have to remove from backend aswell
     // pass id instead? pass title just for testing
     this.favorites = this.favorites.filter(
       (favorite) => favorite.title !== title
     );
-  }
+  } */
 }

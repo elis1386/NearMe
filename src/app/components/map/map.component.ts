@@ -1,5 +1,8 @@
 import { HttpClient, HttpClientJsonpModule } from "@angular/common/http";
 import { Component, Input, NgZone, OnInit } from "@angular/core";
+import { Favorite } from "src/app/models/favorite";
+import { RequestsService } from "src/app/services/requests.service";
+
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
@@ -24,8 +27,13 @@ export class MapComponent implements OnInit {
   };
   placesResult: any = [];
   current_place: any = 0;
+  userId!: string;
+  myPlace: Favorite[] = [];
 
-  constructor(public httpClient: HttpClient) {}
+  constructor(
+    public httpClient: HttpClient,
+    public requestService: RequestsService
+  ) {}
 
   ngOnInit() {
     this.map = new google.maps.Map(
@@ -34,6 +42,7 @@ export class MapComponent implements OnInit {
     );
     this.service = new google.maps.places.PlacesService(this.map);
     this.infoWindow = new google.maps.InfoWindow();
+    
   }
 
   reset() {
@@ -45,6 +54,7 @@ export class MapComponent implements OnInit {
 
   showPlaces(type: string) {
     this.reset();
+    this.requestService.getAllPlaces();
     const searchRequest: google.maps.places.PlaceSearchRequest = {
       type: type,
       radius: 1000,
@@ -77,7 +87,14 @@ export class MapComponent implements OnInit {
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
     const detailsRequest = {
       placeId: place.place_id!,
-      fields: ["name", "formatted_address", "photos", "rating", "icon"],
+      fields: [
+        "name",
+        "formatted_address",
+        "photos",
+        "rating",
+        "icon",
+        "place_id",
+      ],
     };
     this.current_place = place;
     console.log(place);
@@ -97,19 +114,28 @@ export class MapComponent implements OnInit {
       <p class="info-address">${this.current_place.vicinity}</p>
       <div class="rating">
       <p class="info-rating">${this.current_place.rating}</p>
-      <figure class="favorite">
-        <a><i class="bi bi-heart"></i></a>
-      </figure>
       </div>
       </section>
       `;
-
+      const btn = document.createElement("button");
+      btn.textContent = "Favorite";
+      btn.className = "favorite";
+      btn?.addEventListener("click", () => {
+        this.addToFavorite(this.current_place);
+      });
+      content.appendChild(btn);
       this.infoWindow = new google.maps.InfoWindow({
         content: content,
       });
-      /*   this.infoWindow.setContent(content); */
 
       this.infoWindow.open(this.map, marker);
     });
+  }
+
+  addToFavorite(place: Favorite) {
+    console.log(place);
+    this.userId = JSON.parse(localStorage.getItem("user")!).uid;
+    place.userId = this.userId;
+    this.requestService.addToFavorite(place);
   }
 }
