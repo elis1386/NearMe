@@ -42,7 +42,6 @@ export class MapComponent implements OnInit {
     );
     this.service = new google.maps.places.PlacesService(this.map);
     this.infoWindow = new google.maps.InfoWindow();
-    
   }
 
   reset() {
@@ -107,6 +106,7 @@ export class MapComponent implements OnInit {
       }
 
       const content = document.createElement("div");
+      content.className = "info-box";
       content.innerHTML += `
       <section class="show-info" *ngIf="current_place !== 0">
       <h4 class="info-title">${this.current_place.name}</h4>
