@@ -6,12 +6,14 @@ import { SignInComponent } from "./components/sign-in/sign-in.component";
 import { SignUpComponent } from "./components/sign-up/sign-up.component";
 import { AuthGuard } from "./services/auth.guard";
 import { FavoriteComponent } from "./components/favorite/favorite.component";
+import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
 
 const routes: Routes = [
   { path: "", component: MainComponent },
   { path: "", redirectTo: "/sign-in", pathMatch: "full",},
   { path: "sign-in", component: SignInComponent, },
   { path: "register-user", component: SignUpComponent ,},
+  { path: "forgot-password", component: ForgotPasswordComponent ,},
   { path: "map", component: MapComponent, canActivate: [AuthGuard] },
   { path: "favorite", component: FavoriteComponent },
 ];

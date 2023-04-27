@@ -9,6 +9,10 @@
 .gmnoprint {
   display: none;
 }
+.info-box{
+  display: flex;
+  flex-direction: column;
+}
 .gm-style img {
   max-width: 200px;
 }
@@ -34,13 +38,15 @@
 }
 .favorite{
   font-size: 1rem;
-  color: red;
-  border: 1px solid red;
+  color: var(--signUp-btn);
+  border: 1px solid var(--signUp-btn);
   background-color: white;
+  align-self: end;
+  border-radius: 0.5rem
 }
 .favorite:hover{
   color: white;
-  background-color: red;
+  background-color: var(--signUp-btn);
 
 }
 

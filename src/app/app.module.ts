@@ -37,6 +37,7 @@ import { CommonModule } from "@angular/common";
 import { WeatherComponent } from "./components/weather/weather.component";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     SignInComponent,
     WeatherComponent,
     SidebarComponent,
+    ForgotPasswordComponent,
    
   ],
   imports: [

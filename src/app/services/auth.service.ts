@@ -125,4 +125,19 @@ export class AuthService {
       this.router.navigate(["sign-in"]);
     });
   }
+  // Reset Forggot password
+  ForgotPassword(passwordResetEmail: string) {
+    return this.auth
+      .sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+        passwordResetEmail = ''
+        this.router.navigate(["sign-in"])
+      })
+      .catch((error) => {
+        window.alert(error);
+      });
+      
+    
+  }
 }
