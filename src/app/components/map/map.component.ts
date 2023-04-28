@@ -42,6 +42,7 @@ export class MapComponent implements OnInit {
     );
     this.service = new google.maps.places.PlacesService(this.map);
     this.infoWindow = new google.maps.InfoWindow();
+   /*  this.showPlaces('') */
     
   }
 
