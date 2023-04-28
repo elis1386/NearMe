@@ -41,8 +41,8 @@
   color: var(--signUp-btn);
   border: 1px solid var(--signUp-btn);
   background-color: white;
-  align-self: end;
-  border-radius: 0.5rem
+  border-radius: 0.5rem;
+  padding: .3rem
 }
 .favorite:hover{
   color: white;
