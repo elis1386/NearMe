@@ -14,6 +14,9 @@ export class FavoriteComponent implements OnInit {
 
   ngOnInit() {
     this.myPlaces = [];
+    this.getAllMyTask()
+  }
+  getAllMyTask() {
     let clientId = JSON.parse(localStorage.getItem("user")!).uid;
     this.requestService.getAllPlaces().subscribe((data) => {
       data.forEach((place) => {
@@ -24,9 +27,12 @@ export class FavoriteComponent implements OnInit {
     });
   }
 
-/*   removeFavorite() {
-    // TODO: have to remove from backend aswell
-    // pass id instead? pass title just for testing
-    this.myPlaces.filter((place) => place.name !== place.name);
-  } */
+  deleteMyPlace(id: string) {
+    let answer = confirm("Do you really want to delete this task?");
+    if (answer === true) {
+      this.requestService.deletePlace(id);
+    }
+    this.myPlaces = [];
+    this.getAllMyTask()
+  }
 }
