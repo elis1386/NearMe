@@ -15,7 +15,6 @@
 }
 .gm-style img {
   max-width: 200px;
-  max-height: 200px;
 }
 .gm-style-iw,
 .gm-style-iw-c {
@@ -36,6 +35,7 @@
 .info-photo{
   margin-bottom: .5rem;
   width: 200px;
+  height: 200px;
 }
 .favorite{
   font-size: 1rem;

@@ -54,6 +54,7 @@ export class MapComponent implements OnInit {
 
   showPlaces(type: string) {
     this.reset();
+    
     this.requestService.getAllPlaces();
     const searchRequest: google.maps.places.PlaceSearchRequest = {
       type: type,
@@ -96,7 +97,6 @@ export class MapComponent implements OnInit {
       ],
     };
     this.current_place = place;
-    console.log(place);
     this.service.getDetails(detailsRequest, (place, status) => {
       if (
         status !== google.maps.places.PlacesServiceStatus.OK ||
@@ -112,8 +112,8 @@ export class MapComponent implements OnInit {
       <h4 class="info-title">${this.current_place.name}</h4>
       <img class="info-photo" src="${this.current_place.photos[0].getUrl()}" alt=""  />
       <p class="info-address">${this.current_place.vicinity}</p>
-      <div class="rating">
-      <p class="info-rating">${this.current_place.rating}</p>
+      <div class="rating" *ngIf="place.rating">
+      <p class="info-rating">rating: ${this.current_place.rating}</p>
       </div>
       </section>
       `;

@@ -18,7 +18,7 @@
           <h5 class="card-title">{{ place.name }}</h5>
         </div>
         <div *ngIf="place.rating" class="d-flex flex-row gap-2">
-          <p class="text-secondary fw-bolder">{{ place.rating }}</p>
+          <p class="text-secondary fw-bolder">rating: {{ place.rating }}</p>
           <ul class="d-flex flex-row text-warning list-unstyled">
             <li *ngFor="let rating of place.ratingArray">
               <i class="bi bi-star-fill"></i>
