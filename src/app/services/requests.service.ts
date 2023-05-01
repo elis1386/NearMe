@@ -20,23 +20,6 @@ export class RequestsService {
 
   constructor(private firestore: AngularFirestore) {}
 
-/*   addToFavorite(place: Favorite) {
-    const placesCollection = this.firestore.collection("favorite");
-    placesCollection
-      .add({
-        id: place.place_id,
-        name: place.name,
-        vicinity: place.vicinity,
-        photo: place.photos![0].getUrl(),
-        rating: place.rating,
-        userId: place.userId,
-      })
-      .then(() => console.log("Data added to Firestore successfully"))
-      .catch((error) =>
-        console.error("Error adding data to Firestore: ", error)
-      );
-  } */
-
   addToFavorite(place: Favorite) {
     const placesCollection = this.firestore.collection("favorite");
     const docRef = placesCollection.doc(place.place_id);
@@ -59,6 +42,7 @@ export class RequestsService {
       map((querySnapshot) => {
         const places: any[] = [];
         querySnapshot.forEach((doc) => {
+          
           places.push(doc.data());
         });
         return places;
