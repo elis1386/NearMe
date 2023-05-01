@@ -1,7 +1,9 @@
 .row {
-  height: 600px;
+  height: 800px;
 }
-
+.card{
+  margin-bottom: 1rem;
+}
 .card img {
   object-fit: cover;
   width: 100%;
@@ -13,4 +15,25 @@
 }
 .bi-star-fill {
   color: #ff904d;
+}
+
+@media only screen and (max-width: 768px) {
+  .row {
+    height: 600px;
+  }
+
+}
+@media only screen and (max-width: 475px) {
+  .row {
+    height: 550px;
+  }
+  .card{
+    margin: 1rem;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .row {
+    height: 550px;
+  }
+ 
 }

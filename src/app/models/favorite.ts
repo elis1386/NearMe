@@ -1,4 +1,5 @@
 export interface Favorite {
+  id: any;
   name: string;
   vicinity: string;
   rating: string;

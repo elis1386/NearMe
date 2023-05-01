@@ -42,8 +42,7 @@ export class MapComponent implements OnInit {
     );
     this.service = new google.maps.places.PlacesService(this.map);
     this.infoWindow = new google.maps.InfoWindow();
-   /*  this.showPlaces('') */
-    
+    /*  this.showPlaces('') */
   }
 
   reset() {
@@ -70,7 +69,6 @@ export class MapComponent implements OnInit {
       }
 
       this.placesResult = results;
-      console.log(this.placesResult);
 
       for (let i = 0; i < results.length!; i++) {
         const place = results[i];
@@ -134,14 +132,13 @@ export class MapComponent implements OnInit {
     });
   }
 
-  addToFavorite(place: Favorite, ) {
+  addToFavorite(place: Favorite) {
     console.log(place);
     this.userId = JSON.parse(localStorage.getItem("user")!).uid;
     place.userId = this.userId;
     this.requestService.addToFavorite(place);
-    setTimeout(()=>{
+    setTimeout(() => {
       this.infoWindow.close();
-    },300)
-    
+    }, 300);
   }
 }

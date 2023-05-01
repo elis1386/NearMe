@@ -14,15 +14,16 @@ export class FavoriteComponent implements OnInit {
 
   ngOnInit() {
     this.myPlaces = [];
-    this.getAllMyTask()
+    this.getAllMyPlace();
   }
-  getAllMyTask() {
+  getAllMyPlace() {
     let clientId = JSON.parse(localStorage.getItem("user")!).uid;
     this.requestService.getAllPlaces().subscribe((data) => {
       data.forEach((place) => {
-        if (clientId === place.userId) {
+        if (clientId === place.userId && !this.myPlaces.some(p => p.id! === place.id!)) {
           this.myPlaces.push(place);
         }
+        console.log(place);
       });
     });
   }
@@ -33,6 +34,6 @@ export class FavoriteComponent implements OnInit {
       this.requestService.deletePlace(id);
     }
     this.myPlaces = [];
-    this.getAllMyTask()
+    this.getAllMyPlace();
   }
 }

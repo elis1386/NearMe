@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   isLogged: boolean = false;
   user: any;
   currentUser: any;
+  currentRoute: any; 
 
   constructor(
     public authService: AuthService,

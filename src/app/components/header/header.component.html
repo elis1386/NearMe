@@ -1,9 +1,12 @@
 <header class="d-flex align-items-center justify-content-between border-bottom">
   <!-- Logo -->
-  <a href="/" class="mb-2 mt-2 text-decoration-none col-lg-3 col-md-4 col-sm-6 col-xs-6">
+  <a
+    [routerLink]="[this.currentRoute]"
+    class="mb-2 mt-2 text-decoration-none col-lg-3 col-md-4 col-sm-6 col-xs-6"
+  >
     <img [src]="imgUrl" alt="Near me logo" class="logo" />
   </a>
-    <!-- SignUpBtn -->
+  <!-- SignUpBtn -->
   <div class="col-md-3 text-end">
     <button type="button" class="btn signUp-btn" *ngIf="isLogged">
       Sign-up
@@ -50,7 +53,7 @@
     </a>
     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
       <li>
-        <p class="dropdown-item"> Hello, {{currentUser?.firstName}}</p>
+        <p class="dropdown-item">Hello, {{ currentUser?.firstName }}</p>
       </li>
       <li><hr class="dropdown-divider" /></li>
       <li>
