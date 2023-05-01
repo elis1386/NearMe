@@ -25,10 +25,14 @@ export class MapComponent implements OnInit {
     },
     zoom: 15,
   };
+  userId!: string;
+
   placesResult: any = [];
   current_place: any = 0;
-  userId!: string;
   myPlace: Favorite[] = [];
+
+  currentMarker: google.maps.Marker | null = null;
+  markers: google.maps.Marker[] = [];
 
   constructor(
     public httpClient: HttpClient,
@@ -36,25 +40,37 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.map = new google.maps.Map(
-      document.getElementById("map")!,
-      this.options
-    );
-    this.service = new google.maps.places.PlacesService(this.map);
-    this.infoWindow = new google.maps.InfoWindow();
-    /*  this.showPlaces('') */
+    //Show current geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.options.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        this.map = new google.maps.Map(
+          document.getElementById("map")!,
+          this.options
+        );
+        this.service = new google.maps.places.PlacesService(this.map);
+        this.infoWindow = new google.maps.InfoWindow();
+        this.showPlaces("all");
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
   }
 
   reset() {
-    this.map = new google.maps.Map(
-      document.getElementById("map")!,
-      this.options
-    );
+    // Remove all markers from the map
+    for (let i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(null);
+    }
+    this.markers = [];
   }
 
   showPlaces(type: string) {
     this.reset();
-    
+
     this.requestService.getAllPlaces();
     const searchRequest: google.maps.places.PlaceSearchRequest = {
       type: type,
@@ -70,7 +86,7 @@ export class MapComponent implements OnInit {
       }
 
       this.placesResult = results;
-
+      console.log(this.placesResult);
       for (let i = 0; i < results.length!; i++) {
         const place = results[i];
         const marker = new google.maps.Marker({
@@ -80,11 +96,19 @@ export class MapComponent implements OnInit {
         google.maps.event.addListener(marker, "click", () =>
           this.showInfo(place, marker)
         );
+        this.markers.push(marker); // Keep track of the added marker
       }
     });
   }
 
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
+    // close the currently opened marker
+    if (this.currentMarker) {
+      this.currentMarker.setMap(null);
+      this.currentMarker = null;
+    }
+
+    // open the new marker and set it as the current marker
     const detailsRequest = {
       placeId: place.place_id!,
       fields: [
@@ -108,15 +132,15 @@ export class MapComponent implements OnInit {
       const content = document.createElement("div");
       content.className = "info-box";
       content.innerHTML += `
-      <section class="show-info" *ngIf="current_place !== 0">
-      <h4 class="info-title">${this.current_place.name}</h4>
-      <img class="info-photo" src="${this.current_place.photos[0].getUrl()}" alt=""  />
-      <p class="info-address">${this.current_place.vicinity}</p>
-      <div class="rating" *ngIf="place.rating">
-      <p class="info-rating">rating: ${this.current_place.rating}</p>
-      </div>
-      </section>
-      `;
+    <section class="show-info" *ngIf="current_place !== 0">
+    <h4 class="info-title">${this.current_place.name}</h4>
+    <img class="info-photo" src="${this.current_place.photos[0].getUrl()}" alt=""  />
+    <p class="info-address">${this.current_place.vicinity}</p>
+    <div class="rating" *ngIf="place.rating">
+    <p class="info-rating">rating: ${this.current_place.rating}</p>
+    </div>
+    </section>
+    `;
       const btn = document.createElement("button");
       btn.textContent = "Favorite";
       btn.className = "favorite";
@@ -128,7 +152,9 @@ export class MapComponent implements OnInit {
         content: content,
       });
 
+      this.currentMarker = marker;
       this.infoWindow.open(this.map, marker);
+      console.log(this.current_place);
     });
   }
 
