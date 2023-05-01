@@ -9,7 +9,7 @@
     <div class="card-body">
       <div class="d-flex flex-row justify-content-between">
         <h5 class="card-title">{{ place.name }}</h5>
-        <i (click)="addToFavorites(place)" class="heart bi bi-heart"></i>
+        <i (click)="addToFavorite(place)" class="heart bi bi-heart"></i>
       </div>
       <div *ngIf="place.rating" class="d-flex flex-row gap-2">
         <p class="text-secondary">{{ place.rating }}</p>
