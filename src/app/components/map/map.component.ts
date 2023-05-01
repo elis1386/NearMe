@@ -23,7 +23,7 @@ export class MapComponent implements OnInit {
       lat: 60.18608603539844,
       lng: 24.943128762153208,
     },
-    zoom: 15,
+    zoom: 14,
   };
   userId!: string;
 
@@ -53,7 +53,7 @@ export class MapComponent implements OnInit {
         );
         this.service = new google.maps.places.PlacesService(this.map);
         this.infoWindow = new google.maps.InfoWindow();
-        this.showPlaces("all");
+   /*      this.showPlaces("all"); */
       });
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -74,7 +74,7 @@ export class MapComponent implements OnInit {
     this.requestService.getAllPlaces();
     const searchRequest: google.maps.places.PlaceSearchRequest = {
       type: type,
-      radius: 1000,
+      radius: 3000,
       location: this.options.center!,
     };
     this.service.nearbySearch(searchRequest, (results, status) => {
@@ -100,7 +100,7 @@ export class MapComponent implements OnInit {
       }
     });
   }
-
+//Under marker custom info from google place web api
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
     // close the currently opened marker
     if (this.currentMarker) {
