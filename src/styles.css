@@ -6,6 +6,48 @@
   --signUp-btn: #ff904d;
   --main-text: #504b43;
 }
-.gmnoprint{
+.gmnoprint {
   display: none;
 }
+.info-box{
+  display: flex;
+  flex-direction: column;
+}
+.gm-style img {
+  max-width: 200px;
+}
+.gm-style-iw,
+.gm-style-iw-c {
+  width: 230px;
+  height: auto;
+}
+.rating {
+  display: flex;
+  justify-content: space-between;
+}
+.info-address{
+  font-size: 1.2rem;
+}
+.info-rating{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.info-photo{
+  margin-bottom: .5rem;
+  width: 200px;
+  height: 200px;
+}
+.favorite{
+  font-size: 1rem;
+  color: var(--signUp-btn);
+  border: 1px solid var(--signUp-btn);
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: .3rem
+}
+.favorite:hover{
+  color: white;
+  background-color: var(--signUp-btn);
+
+}
+

@@ -1,12 +1,14 @@
 import { HttpClient, HttpClientJsonpModule } from "@angular/common/http";
-import { Component, NgZone, OnInit } from "@angular/core";
+import { Component, Input, NgZone, OnInit } from "@angular/core";
+import { Favorite } from "src/app/models/favorite";
+import { RequestsService } from "src/app/services/requests.service";
+
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
-  styleUrls: ["./map.component.css"]
+  styleUrls: ["./map.component.css"],
 })
 export class MapComponent implements OnInit {
-  isVisible: boolean = false;
   mapLoaded!: boolean;
   map!: google.maps.Map;
   geocoder = new google.maps.Geocoder();
@@ -21,34 +23,58 @@ export class MapComponent implements OnInit {
       lat: 60.18608603539844,
       lng: 24.943128762153208,
     },
-    zoom: 15,
+    zoom: 14,
   };
+  userId!: string;
+
   placesResult: any = [];
+  current_place: any = 0;
+  myPlace: Favorite[] = [];
 
-  constructor(public httpClient: HttpClient) {}
+  currentMarker: google.maps.Marker | null = null;
+  markers: google.maps.Marker[] = [];
 
+  constructor(
+    public httpClient: HttpClient,
+    public requestService: RequestsService
+  ) {}
 
   ngOnInit() {
-    this.map = new google.maps.Map(
-      document.getElementById("map")!,
-      this.options
-    );
-    this.service = new google.maps.places.PlacesService(this.map);
-    this.infoWindow = new google.maps.InfoWindow();
+    //Show current geolocation
+ /*    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.options.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }; */
+        this.map = new google.maps.Map(
+          document.getElementById("map")!,
+          this.options
+        );
+        this.service = new google.maps.places.PlacesService(this.map);
+        this.infoWindow = new google.maps.InfoWindow();
+   /*      this.showPlaces("all"); */
+  /*     });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    } */
   }
 
   reset() {
-    this.map = new google.maps.Map(
-      document.getElementById("map")!,
-      this.options
-    );
+    // Remove all markers from the map
+    for (let i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(null);
+    }
+    this.markers = [];
   }
 
   showPlaces(type: string) {
     this.reset();
+
+    this.requestService.getAllPlaces();
     const searchRequest: google.maps.places.PlaceSearchRequest = {
       type: type,
-      radius: 1500,
+      radius: 3000,
       location: this.options.center!,
     };
     this.service.nearbySearch(searchRequest, (results, status) => {
@@ -59,9 +85,8 @@ export class MapComponent implements OnInit {
         return;
       }
 
-      console.log(results);
       this.placesResult = results;
-
+      console.log(this.placesResult);
       for (let i = 0; i < results.length!; i++) {
         const place = results[i];
         const marker = new google.maps.Marker({
@@ -71,15 +96,31 @@ export class MapComponent implements OnInit {
         google.maps.event.addListener(marker, "click", () =>
           this.showInfo(place, marker)
         );
+        this.markers.push(marker); // Keep track of the added marker
       }
     });
   }
-
+//Under marker custom info from google place web api
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
+    // close the currently opened marker
+    if (this.currentMarker) {
+      this.currentMarker.setMap(null);
+      this.currentMarker = null;
+    }
+
+    // open the new marker and set it as the current marker
     const detailsRequest = {
       placeId: place.place_id!,
-      fields: ["name", "formatted_address", "photos", "rating", "opening_hours", "icon"],
+      fields: [
+        "name",
+        "formatted_address",
+        "photos",
+        "rating",
+        "icon",
+        "place_id",
+      ],
     };
+    this.current_place = place;
     this.service.getDetails(detailsRequest, (place, status) => {
       if (
         status !== google.maps.places.PlacesServiceStatus.OK ||
@@ -88,62 +129,42 @@ export class MapComponent implements OnInit {
         return;
       }
 
-      console.log(place);
       const content = document.createElement("div");
-      content.style.width = "200px"
-
-      const nameElement = document.createElement("h4");
-      nameElement.textContent = place.name!;
-      // this.favoritePlace.title = place.name!;
-      content.appendChild(nameElement);
-
-      if (place.photos) {
-        const placePhoto = document.createElement("img");
-        placePhoto.src = place.photos![0].getUrl();
-        content.appendChild(placePhoto);
-        placePhoto.style.width = "100%";
-        placePhoto.style.marginBottom = "5px";
-        // this.favoritePlace.img = place.photos![0].getUrl();
-      }
-
-      const placeAddressElement = document.createElement("p");
-      placeAddressElement.textContent = place.formatted_address!;
-      content.appendChild(placeAddressElement);
-      // this.favoritePlace.address = place.formatted_address!;
-
-      const placeRatingElement = document.createElement("p");
-      placeRatingElement.textContent = 'Rating: '+place.rating!.toString();
-      placeRatingElement.style.fontWeight = "bold";
-      content.appendChild(placeRatingElement);
-      // this.favoritePlace.description = place.rating!.toString();
-
-      
-      if (place.opening_hours) {
-        const openHoursElement = document.createElement("div");
-        place.opening_hours!.weekday_text!.forEach(element => {
-        let text = document.createElement("p");
-        text.textContent += element;
-        openHoursElement.appendChild(text);
+      content.className = "info-box";
+      content.innerHTML += `
+    <section class="show-info" *ngIf="current_place !== 0">
+    <h4 class="info-title">${this.current_place.name}</h4>
+    <img class="info-photo"*ngIf="place.photos" src="${this.current_place.photos[0].getUrl()}" alt=""  />
+    <p class="info-address">${this.current_place.vicinity}</p>
+    <div class="rating" *ngIf="place.rating">
+    <p class="info-rating">rating: ${this.current_place.rating}</p>
+    </div>
+    </section>
+    `;
+      const btn = document.createElement("button");
+      btn.textContent = "Favorite";
+      btn.className = "favorite";
+      btn?.addEventListener("click", () => {
+        this.addToFavorite(this.current_place);
       });
-        content.appendChild(openHoursElement);
-        // this.favoritePlace.description += openHoursElement.textContent;
-     }
+      content.appendChild(btn);
+      this.infoWindow = new google.maps.InfoWindow({
+        content: content,
+      });
 
-      const heartButton = document.createElement("a");
-      heartButton.id = "toggle-heart";
-      heartButton.textContent = "❤";
-      heartButton.style.fontSize = "20px";
-      heartButton.style.color = "lightgray";
-      heartButton.addEventListener("click", () => {
-        heartButton.style.color = "red";
-        // this.favoritePlaceList.push(place);
-        // console.log(this.favoritePlace)
-        // this.RequestsService.sendFavoritePlace(this.favoritePlace)
-      })
-      content.appendChild(heartButton);
-      
-      this.infoWindow.setContent(content);
+      this.currentMarker = marker;
       this.infoWindow.open(this.map, marker);
+      console.log(this.current_place);
     });
+  }
+
+  addToFavorite(place: Favorite) {
+    console.log(place);
+    this.userId = JSON.parse(localStorage.getItem("user")!).uid;
+    place.userId = this.userId;
+    this.requestService.addToFavorite(place);
+    setTimeout(() => {
+      this.infoWindow.close();
+    }, 300);
   }
 }

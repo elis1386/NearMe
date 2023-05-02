@@ -1,59 +1,39 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Favorite } from "src/app/models/favorite";
+import { RequestsService } from "src/app/services/requests.service";
 
 @Component({
   selector: "app-favorite",
   templateUrl: "./favorite.component.html",
   styleUrls: ["./favorite.component.css"],
 })
-export class FavoriteComponent {
-  /* favorites array just for testing purpose */
-  public favorites: Favorite[] = [
-    {
-      img: "https://source.unsplash.com/random/?restaurant/300x100",
-      title: "Title 1",
-      description: "Description about place here",
-      address: "Address 5 16A",
-    },
-    {
-      img: "https://source.unsplash.com/random/?bar/300x100",
-      title: "Title 2",
-      description: "Description about place here",
-      address: "Address 5 16A",
-    },
-    {
-      img: "https://source.unsplash.com/random/?restaurant/",
-      title: "Title 3",
-      description: "Description about place here",
-      address: "Address 5 16A",
-    },
-    {
-      img: "https://source.unsplash.com/random/?restaurant/300x100",
-      title: "Title 4",
-      description: "Description about place here",
-      address: "Address 5 16A",
-    },
-    {
-      img: "https://source.unsplash.com/random/?bar/300x100",
-      title: "Title 5",
-      description: "Description about place here",
-      address: "Address 5 16A",
-    },
-    {
-      img: "https://source.unsplash.com/random",
-      title: "Title 6",
-      description: "Description about place here",
-      address: "Address 5 16A",
-    },
-  ];
-
+export class FavoriteComponent implements OnInit {
   isVisable: boolean = false;
+  myPlaces: Favorite[] = [];
+  constructor(public requestService: RequestsService) {}
 
-  removeFavorite(title: string) {
-    // TODO: have to remove from backend aswell
-    // pass id instead? pass title just for testing
-    this.favorites = this.favorites.filter(
-      (favorite) => favorite.title !== title
-    );
+  ngOnInit() {
+    this.myPlaces = [];
+    this.getAllMyPlace();
+  }
+  getAllMyPlace() {
+    let clientId = JSON.parse(localStorage.getItem("user")!).uid;
+    this.requestService.getAllPlaces().subscribe((data) => {
+      data.forEach((place) => {
+        if (clientId === place.userId && !this.myPlaces.some(p => p.id! === place.id!)) {
+          this.myPlaces.push(place);
+        }
+        console.log(place);
+      });
+    });
+  }
+
+  deleteMyPlace(id: string) {
+    let answer = confirm("Do you really want to delete this task?");
+    if (answer === true) {
+      this.requestService.deletePlace(id);
+    }
+    this.myPlaces = [];
+    this.getAllMyPlace();
   }
 }

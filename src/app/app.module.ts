@@ -36,6 +36,9 @@ import { AuthService } from "./services/auth.service";
 import { CommonModule } from "@angular/common";
 import { WeatherComponent } from "./components/weather/weather.component";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { PlacePageComponent } from './components/place-page/place-page.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
     SignUpComponent,
     SignInComponent,
     WeatherComponent,
+    SidebarComponent,
+    ForgotPasswordComponent,
+    PlacePageComponent,
    
   ],
   imports: [

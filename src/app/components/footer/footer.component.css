@@ -1,5 +1,5 @@
 .footer {
- border-top: 1px solid rgb(164, 164, 164);
+  border-top: 1px solid rgb(164, 164, 164);
 }
 .links {
   color: grey;
@@ -10,5 +10,21 @@
   color: var(--main-color);
 }
 .bi {
- font-size: 1.8rem;
+  font-size: 1.8rem;
+}
+@media only screen and (min-width: 1024px) {
+  .footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .bi {
+    font-size: 1.2rem;
+  }
+  .links {
+    font-size: 0.9rem;
+  }
 }
