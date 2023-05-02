@@ -58,11 +58,11 @@ export class MapComponent implements OnInit {
         this.service = new google.maps.places.PlacesService(this.map);
         this.infoWindow = new google.maps.InfoWindow();
         /*      this.showPlaces("all"); */
-      });
+ /*      });
 
     } else {
       console.log("Geolocation is not supported by this browser.");
-    } */
+    }  */
   }
 
   reset() {
