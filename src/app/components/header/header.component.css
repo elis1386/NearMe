@@ -49,6 +49,12 @@ header {
   header {
     margin-top: 0.8em;
   }
+  .logo-box{
+    width: 70%;
+  }
+  .logo {
+    width: 40%;
+  }
 }
 
 .laptop-weather {
