@@ -12,7 +12,6 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
 })
 export class HeaderComponent implements OnInit {
   imgUrl = "assets/logoNM2.png";
-  randomPhoto = "https://source.unsplash.com/random/?restaurant/300x100";
   isLogged: boolean = false;
   user: any;
   currentUser: any;

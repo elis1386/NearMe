@@ -1,6 +1,7 @@
 <section
   *ngIf="myPlaces.length; else noFavorites"
   class="row overflow-auto mt-4"
+  [routerLink]="['/place']"
 >
   <div
     *ngFor="let place of myPlaces"
