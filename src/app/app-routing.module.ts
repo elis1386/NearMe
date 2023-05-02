@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "forgot-password", component: ForgotPasswordComponent ,},
   { path: "map", component: MapComponent, canActivate: [AuthGuard] },
   { path: "favorite", component: FavoriteComponent },
-  { path: "place", component: PlacePageComponent },
+  { path: "place/:place.id", component: PlacePageComponent },
 ];
 
 @NgModule({

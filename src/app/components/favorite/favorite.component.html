@@ -1,11 +1,12 @@
 <section
   *ngIf="myPlaces.length; else noFavorites"
   class="row overflow-auto mt-4"
-  [routerLink]="['/place']"
+  
 >
   <div
     *ngFor="let place of myPlaces"
     class="col-12 col-md-6 col-xl-4 col-xxl-3"
+    routerLink='/place/:{{place.id}}'
   >
     <div class="card">
       <img
