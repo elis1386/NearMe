@@ -34,6 +34,10 @@ export class MapComponent implements OnInit {
   currentMarker: google.maps.Marker | null = null;
   markers: google.maps.Marker[] = [];
 
+  place: string =
+    "https://source.unsplash.com/random/?user,face/200x200";
+  rating: string = ' '  
+
   constructor(
     public httpClient: HttpClient,
     public requestService: RequestsService
@@ -53,8 +57,9 @@ export class MapComponent implements OnInit {
         );
         this.service = new google.maps.places.PlacesService(this.map);
         this.infoWindow = new google.maps.InfoWindow();
-   /*      this.showPlaces("all"); */
-  /*     });
+        /*      this.showPlaces("all"); */
+      });
+
     } else {
       console.log("Geolocation is not supported by this browser.");
     } */
@@ -100,7 +105,7 @@ export class MapComponent implements OnInit {
       }
     });
   }
-//Under marker custom info from google place web api
+  //Under marker custom info from google place web api
   showInfo(place: google.maps.places.PlaceResult, marker: google.maps.Marker) {
     // close the currently opened marker
     if (this.currentMarker) {
@@ -128,16 +133,22 @@ export class MapComponent implements OnInit {
       ) {
         return;
       }
+      if (this.current_place.photos ) {
+        this.place = this.current_place.photos[0].getUrl();
+      }
+      if (this.current_place.rating ) {
+        this.rating = `rating:${this.current_place.rating}`;
+      }
 
       const content = document.createElement("div");
       content.className = "info-box";
       content.innerHTML += `
     <section class="show-info" *ngIf="current_place !== 0">
     <h4 class="info-title">${this.current_place.name}</h4>
-    <img class="info-photo"*ngIf="place.photos" src="${this.current_place.photos[0].getUrl()}" alt=""  />
+    <img class="info-photo" src="${this.place}" alt=""  />
     <p class="info-address">${this.current_place.vicinity}</p>
     <div class="rating" *ngIf="place.rating">
-    <p class="info-rating">rating: ${this.current_place.rating}</p>
+    <p class="info-rating"> ${this.rating}</p>
     </div>
     </section>
     `;
