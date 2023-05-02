@@ -1,27 +1,30 @@
-<div class="card">
-  <div class="row g-0">
-    <div class="col-md-4">
+<section class="box">
+ <!--  <div class="d-flex flex-wrap"> -->
+    <div class="px-3 py-4">
       <img
-        src="https://i.media.fi/incoming/n97lib/1986005.jpg/alternates/FREE_1440/1986005.jpg"
-        class="img"
-        alt="..."
+        *ngIf="currentPlace.photo"
+        [src]="currentPlace.photo"
+        class="card-img-top"
+        alt="photo of the place"
       />
     </div>
-    <div class="col-md-8 mt-4">
-      <div class="card-body  d-flex flex-column">
-        <h3 class="card-title">Linnanmäki</h3>
-        <p class="card-text">
-          Have fun safely! Various safety instructions and restrictions apply to
-          the rides and attractions at Linnanmäki amusement park. The aim of
-          these is to ensure customers’ safety on board the attractions.
+    <div class="px-3 py-4">
+      <div class="card-body">
+        <h3 class="card-title">{{ currentPlace.name }}</h3>
+        <article class="d-flex gap-4 mt-4">
+        <p class="text-secondary" *ngIf="currentPlace.rating">
+          rating: {{ currentPlace.rating }}
         </p>
-        <a
-          href="#"
-          class="card-link mt-4 align-self-end"
-          [routerLink]="['/favorite']"
-          >Go back</a
-        >
+        <ul class="d-flex flex-row text-warning list-unstyled">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+        </ul>
+      </article>
+      <p class="mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta dolore, consectetur, et magnam voluptas facere ipsa dolorem, incidunt reiciendis consequuntur magni? Sit dicta dolore odit? Laudantium quae ut inventore accusamus?</p>
       </div>
     </div>
-  </div>
-</div>
+ <!--  </div> -->
+</section>
