@@ -11,13 +11,13 @@ import { PlacePageComponent } from "./components/place-page/place-page.component
 
 const routes: Routes = [
   { path: "", component: MainComponent },
-  { path: "", redirectTo: "/sign-in", pathMatch: "full",},
-  { path: "sign-in", component: SignInComponent, },
-  { path: "register-user", component: SignUpComponent ,},
-  { path: "forgot-password", component: ForgotPasswordComponent ,},
+  { path: "", redirectTo: "/sign-in", pathMatch: "full" },
+  { path: "sign-in", component: SignInComponent },
+  { path: "register-user", component: SignUpComponent },
+  { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "map", component: MapComponent, canActivate: [AuthGuard] },
   { path: "favorite", component: FavoriteComponent },
-  { path: "place", component: PlacePageComponent },
+  { path: "place/:id", component: PlacePageComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,6 @@
 <section
   *ngIf="myPlaces.length; else noFavorites"
   class="row overflow-auto mt-4"
-  [routerLink]="['/place']"
 >
   <div
     *ngFor="let place of myPlaces"
@@ -16,7 +15,9 @@
       />
       <div class="card-body">
         <div class="d-flex flex-row justify-content-between">
-          <h5 class="card-title">{{ place.name }}</h5>
+          <h5 class="card-title">
+            <a routerLink="/place/{{ place.id }}"> {{ place.name }}</a>
+          </h5>
         </div>
         <div *ngIf="place.rating" class="d-flex flex-row gap-2">
           <p class="text-secondary fw-bolder">rating: {{ place.rating }}</p>

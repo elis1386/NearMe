@@ -10,6 +10,7 @@ import { RequestsService } from "src/app/services/requests.service";
 export class FavoriteComponent implements OnInit {
   isVisable: boolean = false;
   myPlaces: Favorite[] = [];
+
   constructor(public requestService: RequestsService) {}
 
   ngOnInit() {
@@ -20,7 +21,10 @@ export class FavoriteComponent implements OnInit {
     let clientId = JSON.parse(localStorage.getItem("user")!).uid;
     this.requestService.getAllPlaces().subscribe((data) => {
       data.forEach((place) => {
-        if (clientId === place.userId && !this.myPlaces.some(p => p.id! === place.id!)) {
+        if (
+          clientId === place.userId &&
+          !this.myPlaces.some((p) => p.id! === place.id!)
+        ) {
           this.myPlaces.push(place);
         }
         console.log(place);
