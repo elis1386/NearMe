@@ -134,7 +134,7 @@ export class MapComponent implements OnInit {
       content.innerHTML += `
     <section class="show-info" *ngIf="current_place !== 0">
     <h4 class="info-title">${this.current_place.name}</h4>
-    <img class="info-photo" src="${this.current_place.photos[0].getUrl()}" alt=""  />
+    <img class="info-photo"*ngIf="place.photos" src="${this.current_place.photos[0].getUrl()}" alt=""  />
     <p class="info-address">${this.current_place.vicinity}</p>
     <div class="rating" *ngIf="place.rating">
     <p class="info-rating">rating: ${this.current_place.rating}</p>

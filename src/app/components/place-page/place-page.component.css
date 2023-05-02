@@ -1,0 +1,26 @@
+.img{
+    height: 550px;
+    width: 400px;
+    overflow: hidden;
+    object-fit: cover;
+    padding: .5rem;
+}
+.card-link{
+    color: var(--main-color);
+    font-weight: 600;
+    border: 1px solid var(--main-color);
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+
+@media only screen and (max-width: 375px) {
+    .img{
+        height: 350px;
+        width: 98%;
+        overflow: hidden;
+        object-fit: cover;
+        padding: .5rem;
+    }
+  }
