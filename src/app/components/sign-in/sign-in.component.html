@@ -10,6 +10,14 @@
           required=""
         />
         <label for="floatingInput">Email address</label>
+        <p
+        *ngIf="
+          this.signInForm.get('email')?.invalid &&
+          this.signInForm.get('email')?.touched
+        "
+      >
+        <small class="text-danger">Email is required</small>
+      </p>
       </div>
       <div class="form-floating mb-4">
         <input
@@ -26,7 +34,7 @@
           this.signInForm.get('password')?.touched
         "
       >
-        <small class="text-danger">Password is required and should include Upper letter and number</small>
+        <small class="text-danger">Password is required</small>
       </p>
       </div>
   
