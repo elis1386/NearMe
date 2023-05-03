@@ -1,11 +1,12 @@
 <section
   *ngIf="myPlaces.length; else noFavorites"
   class="row overflow-auto mt-4"
-  [routerLink]="['/place']"
+  
 >
   <div
     *ngFor="let place of myPlaces"
     class="col-12 col-md-6 col-xl-4 col-xxl-3"
+    routerLink='/place/{{place.id}}'
   >
     <div class="card">
       <img
@@ -20,11 +21,6 @@
         </div>
         <div *ngIf="place.rating" class="d-flex flex-row gap-2">
           <p class="text-secondary fw-bolder">rating: {{ place.rating }}</p>
-          <ul class="d-flex flex-row text-warning list-unstyled">
-            <li *ngFor="let rating of place.ratingArray">
-              <i class="bi bi-star-fill"></i>
-            </li>
-          </ul>
         </div>
         <div *ngIf="place.vicinity" class="d-flex flex-row gap-1">
           <i class="bi bi-geo-alt"></i>
@@ -41,41 +37,6 @@
       </div>
     </div>
   </div>
-  <!-- <div
-    class="col-12 col-md-6 col-xl-4 col-xxl-3"
-    *ngFor="let place of myPlaces"
-  >
-    <div class="card mb-3">
-      <img
-        *ngIf="place.photos"
-        src="{{ place.photos[0].getUrl() }}"
-        class="card-img-top"
-        alt="Favorite place image"
-      />
-
-      <div class="card-body">
-        <h5 class="card-title">{{ place.name }}</h5>
-
-        <div class="stars">
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-        <p class="card-text">{{ place.vicinity }}</p>
-        <p class="card-text">{{ place.rating }}</p>
-        <button
-          type="button"
-          class="btn btn-danger"
-          (click)="deleteMyPlace(place.id!)"
-        >
-          <i class="bi bi-trash3-fill"></i>
-          Delete
-        </button>
-      </div>
-    </div>
-  </div> -->
 </section>
 <!-- if no favorites then show this -->
 <ng-template #noFavorites>
