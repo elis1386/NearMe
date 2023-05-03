@@ -10,6 +10,9 @@
   .form-check-input:checked {
     background-color: var(--main-color);
   }
+  .createUser{
+    margin-top: 2rem;
+  }
   
   @media only screen and (max-width: 768px) {
     .form-signin {
@@ -25,6 +28,9 @@
     }
     .banklogin {
       font-size: 1rem;
+    }
+    .createUser{
+      margin-top: 4rem;
     }
   }
   
