@@ -5,11 +5,12 @@
   --main-color: rgb(121, 83, 178);
   --signUp-btn: #ff904d;
   --main-text: #504b43;
+  --gray: #818589;
 }
 .gmnoprint {
   display: none;
 }
-.info-box{
+.info-box {
   display: flex;
   flex-direction: column;
 }
@@ -25,29 +26,27 @@
   display: flex;
   justify-content: space-between;
 }
-.info-address{
+.info-address {
   font-size: 1.2rem;
 }
-.info-rating{
+.info-rating {
   font-size: 1.2rem;
   font-weight: 600;
 }
-.info-photo{
-  margin-bottom: .5rem;
+.info-photo {
+  margin-bottom: 0.5rem;
   width: 200px;
   height: 200px;
 }
-.favorite{
+.favorite {
   font-size: 1rem;
   color: var(--signUp-btn);
   border: 1px solid var(--signUp-btn);
   background-color: white;
   border-radius: 0.5rem;
-  padding: .3rem
+  padding: 0.3rem;
 }
-.favorite:hover{
+.favorite:hover {
   color: white;
   background-color: var(--signUp-btn);
-
 }
-

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, SimpleChanges } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { RequestsService } from "src/app/services/requests.service";
 
@@ -28,4 +28,5 @@ export class PlacePageComponent {
       });
     });
   }
+
 }

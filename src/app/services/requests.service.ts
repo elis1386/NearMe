@@ -32,6 +32,7 @@ export class RequestsService {
         photo: place.photos![0].getUrl(),
         rating: place.rating,
         userId: place.userId,
+        types: place.types,
       })
       .then(() => console.log("Data added to Firestore successfully"))
       .catch((error) =>
