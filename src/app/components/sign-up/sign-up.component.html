@@ -1,6 +1,8 @@
 <main class="form-signUp">
   <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-    <h1 class="h3 mb-3 fw-normal text-center">Please fill in the form below.</h1>
+    <h1 class="h3 mb-3 fw-normal text-center">
+      Please fill in the form below.
+    </h1>
     <div class="form-floating mb-4">
       <input
         type="text"
@@ -30,6 +32,16 @@
         formControlName="email"
       />
       <label for="floatingInput">Email address</label>
+      <p
+        *ngIf="
+          this.signUpForm.get('email')?.invalid &&
+          this.signUpForm.get('email')?.touched
+        "
+      >
+        <small class="text-danger"
+          > email is required.</small
+        >
+      </p>
     </div>
     <div class="form-floating mb-4">
       <input
@@ -38,16 +50,18 @@
         placeholder="Password"
         required=""
         formControlName="password"
-
       />
       <label for="floatingPassword">Password</label>
       <p
-      *ngIf="
-      this.firebaseErrorMessage 
-      "
-    >
-      <small class="text-danger">login or password is incorrect, please try again.</small>
-    </p>
+        *ngIf="
+          this.signUpForm.get('password')?.invalid &&
+          this.signUpForm.get('password')?.touched
+        "
+      >
+        <small class="text-danger"
+          >login is required.</small
+        >
+      </p>
     </div>
 
     <div class="checkbox mb-3">
@@ -55,14 +69,8 @@
         <input type="checkbox" class="form-check-input" /> Remember me
       </label>
     </div>
-    <button
-      class="w-100 btn btn-lg"
-      type="submit"
-      value="Sign Up"
-    >
+    <button class="w-100 btn btn-lg" type="submit" value="Sign Up">
       Sign up
     </button>
   </form>
 </main>
-
-
