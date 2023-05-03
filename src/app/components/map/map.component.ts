@@ -123,6 +123,7 @@ export class MapComponent implements OnInit {
         "icon",
         "place_id",
         "types",
+        "opening_hours"
       ],
     };
     this.current_place = place;
