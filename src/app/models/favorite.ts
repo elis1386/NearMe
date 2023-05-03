@@ -4,6 +4,7 @@ export interface Favorite {
   vicinity: string;
   rating: string;
   photos: any;
-  place_id: string
-  userId: string
+  place_id: string;
+  userId: string;
+  types: [];
 }

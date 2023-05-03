@@ -7,13 +7,13 @@
     <img [src]="imgUrl" alt="Near me logo" class="logo" />
   </a>
   <!-- SignUpBtn -->
-  <div class="col-md-3 text-end">
+  <div class="col-md-3 text-end btns">
     <button type="button" class="btn signUp-btn" *ngIf="isLogged">
       Sign-up
     </button>
     <button
       type="button"
-      class="btn"
+      class="btn signIn-btn"
       *ngIf="!(auth.user | async)"
       [routerLink]="['/sign-in']"
     >

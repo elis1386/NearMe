@@ -34,7 +34,9 @@ header {
 .dropdown-toggle::after {
   color: var(--main-color);
 }
-
+.laptop-weather {
+  max-width: 400px;
+}
 @media only screen and (max-width: 768px) {
   .bi-person-circle,
   .bi-cloud-fill {
@@ -46,19 +48,12 @@ header {
 }
 
 @media only screen and (max-width: 425px) {
-  header {
-    margin-top: 0.8em;
-  }
-  .logo-box{
+  .logo-box {
     width: 70%;
   }
   .logo {
     width: 40%;
   }
-}
-
-.laptop-weather {
-  max-width: 400px;
 }
 
 @media only screen and (max-width: 375px) {
@@ -75,5 +70,14 @@ header {
   .dropdown-toggle::after {
     font-size: 1rem;
   }
- 
+  .signIn-btn,
+  .signUp-btn {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .btns {
+    margin: 0;
+    
+  }
 }
