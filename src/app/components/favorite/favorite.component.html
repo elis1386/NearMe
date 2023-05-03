@@ -5,6 +5,7 @@
   <div
     *ngFor="let place of myPlaces"
     class="col-12 col-md-6 col-xl-4 col-xxl-3"
+    routerLink="/place/{{ place.id }}"
   >
     <div class="card">
       <img
@@ -21,11 +22,6 @@
         </div>
         <div *ngIf="place.rating" class="d-flex flex-row gap-2">
           <p class="text-secondary fw-bolder">rating: {{ place.rating }}</p>
-          <ul class="d-flex flex-row text-warning list-unstyled">
-            <li *ngFor="let rating of place.ratingArray">
-              <i class="bi bi-star-fill"></i>
-            </li>
-          </ul>
         </div>
         <div *ngIf="place.vicinity" class="d-flex flex-row gap-1">
           <i class="bi bi-geo-alt"></i>

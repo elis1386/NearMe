@@ -1,26 +1,43 @@
-.img{
-    height: 550px;
-    width: 400px;
-    overflow: hidden;
-    object-fit: cover;
-    padding: .5rem;
+.card-img, .card-img-top {
+  height: 550px;
+  width: 400px;
+  overflow: hidden;
+  object-fit: cover;
 }
-.card-link{
-    color: var(--main-color);
-    font-weight: 600;
-    border: 1px solid var(--main-color);
-    padding: .5rem 1rem;
-    border-radius: 1rem;
-    text-decoration: none;
+.card-link {
+  color: var(--main-color);
+  font-weight: 600;
+  border: 1px solid var(--main-color);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  text-decoration: none;
 }
-
-
-@media only screen and (max-width: 375px) {
-    .img{
-        height: 350px;
-        width: 98%;
-        overflow: hidden;
-        object-fit: cover;
-        padding: .5rem;
+.box {
+  height: auto;
+  display: flex;
+  gap: 2rem;
+}
+.badge{
+  background-color: var(--main-color);
+  color: white;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 768px) {
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
+@media only screen and (max-width: 375px) {
+  .card-img, .card-img-top {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

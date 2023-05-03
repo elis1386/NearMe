@@ -80,6 +80,6 @@ main {
 
 @media only screen and (max-width: 375px) {
   #map {
-    height: 580px;
+    height: 550px;
   }
 }

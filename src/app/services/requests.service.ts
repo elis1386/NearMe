@@ -8,6 +8,7 @@ import { Favorite } from "src/app/models/favorite";
 import firebase from "firebase/compat/app";
 import { collection, collectionData } from "@angular/fire/firestore";
 import { Firestore } from "@firebase/firestore";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +19,7 @@ export class RequestsService {
   places!: Observable<Favorite[]>;
   place!: Observable<Favorite>;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private http: HttpClient) {}
 
   addToFavorite(place: Favorite) {
     const placesCollection = this.firestore.collection("favorite");
@@ -31,6 +32,7 @@ export class RequestsService {
         photo: place.photos![0].getUrl(),
         rating: place.rating,
         userId: place.userId,
+        types: place.types,
       })
       .then(() => console.log("Data added to Firestore successfully"))
       .catch((error) =>
@@ -59,4 +61,5 @@ export class RequestsService {
       console.log('Oops..',err)
     })
   } 
+
 }
