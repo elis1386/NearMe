@@ -42,7 +42,7 @@ export class MapComponent implements OnInit {
     public requestService: RequestsService
   ) {}
 
-  ngOnInit() {
+   ngOnInit() {
     //Show current geolocation
     /*    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -59,7 +59,6 @@ export class MapComponent implements OnInit {
     /*      this.showPlaces("all"); */
     /*      });
          });
-
     } else {
       console.log("Geolocation is not supported by this browser.");
     } */

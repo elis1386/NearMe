@@ -12,6 +12,9 @@
   border-radius: 1rem;
   text-decoration: none;
 }
+.card-body{
+  margin-top: 1rem;
+}
 .box {
   height: auto;
   display: flex;
@@ -47,6 +50,9 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
+  }
+  .card-body{
+    margin-top: 0;
   }
   .small-img{
     width: 100%;
