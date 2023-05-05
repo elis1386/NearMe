@@ -25,16 +25,16 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    this.auth.authState.subscribe((user)=> {
+    this.auth.authState.subscribe((user) => {
       this.userLoggedIn = false;
-      if(user) {
-        this.userLoggedIn = true
-      }else{
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-        this.userLoggedIn = false
+      if (user) {
+        this.userLoggedIn = true;
+      } else {
+        localStorage.setItem("user", "null");
+        JSON.parse(localStorage.getItem("user")!);
+        this.userLoggedIn = false;
       }
-    this.userRef = this.database.collection<User>('users');
+      this.userRef = this.database.collection<User>("users");
     });
   }
 
@@ -130,14 +130,12 @@ export class AuthService {
     return this.auth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-        passwordResetEmail = ''
-        this.router.navigate(["sign-in"])
+        window.alert("Password reset email sent, check your inbox.");
+        passwordResetEmail = "";
+        this.router.navigate(["sign-in"]);
       })
       .catch((error) => {
         window.alert(error);
       });
-      
-    
   }
 }
