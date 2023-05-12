@@ -43,3 +43,6 @@ Thumbs.db
 
 # api keys 
 keys.ts
+/test-results/
+/playwright-report/
+/playwright/.cache/
