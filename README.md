@@ -75,3 +75,6 @@ if you want to chek how project is working before deployng new version do also y
 # firebase
 
 # tests
+- playWright
+cd /tests and inside tests folder fill the command 
+npx playwright test --headed
