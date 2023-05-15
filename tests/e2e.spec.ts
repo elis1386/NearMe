@@ -65,9 +65,39 @@ test.describe("Favorite", () => {
     await page.getByPlaceholder("Password").fill("Elis1234");
     await page.keyboard.press("Tab");
     await page.getByRole("button", { name: "Sign in" }).click();
-    await page.pause()
-    await page.getByRole('link', { name: ' Favorite' }).click();
-    await page.locator('div').filter({ hasText: 'National Aquarium Denmarkrating: 4.3Jacob Fortlingsvej 1, Kastrup Delete' }).nth(1).click()
-    await expect(page).toHaveURL(/place/id);
+    await page.pause();
+    await page.getByRole("link", { name: " Favorite" }).click();
+    await page
+      .locator("div")
+      .filter({
+        hasText:
+          "National Aquarium Denmarkrating: 4.3Jacob Fortlingsvej 1, Kastrup Delete",
+      })
+      .nth(1)
+      .click();
+    await expect(page).toHaveURL(/place/di);
+  });
+});
+
+test.describe("List", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://nearme-b6f9d.web.app/");
+  });
+  test("check list component logic", async ({ page }) => {
+    /* login first */
+    await page.getByPlaceholder("name@example.com").fill("elis1386@gmail.com");
+    await page.keyboard.press("Tab");
+    await page.getByPlaceholder("Password").fill("Elis1234");
+    await page.keyboard.press("Tab");
+    await page.getByRole("button", { name: "Sign in" }).click();
+    await page.getByRole("button", { name: "" }).click();
+    /* press sidebar button then list component should show "No places found" */
+    expect(page.getByText("No places found")).toBeTruthy();
+    await page.getByRole("button", { name: "Close" }).click();
+    await page.getByRole("button", { name: "Places" }).click();
+    await page.getByText("Bakery").click();
+    await page.getByRole("button", { name: "" }).click();
+    /* press bakery button then list component should show places and "No places found" text should not be visible */
+    await expect(page.getByText("No places found")).not.toBeVisible();
   });
 });
