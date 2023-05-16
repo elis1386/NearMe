@@ -1,5 +1,5 @@
 <section class="box">
-  <div class="px-3 py-4">
+  <div class="px-3 py-3 small-img">
     <img
       *ngIf="currentPlace.photo"
       [src]="currentPlace.photo"
@@ -7,7 +7,7 @@
       alt="photo of the place"
     />
   </div>
-  <div class="px-3 py-4">
+  <div class="px-3 mb-3">
     <div class="card-body">
       <h3 class="card-title">{{ currentPlace.name }}</h3>
       <article class="d-flex gap-4 mt-4">

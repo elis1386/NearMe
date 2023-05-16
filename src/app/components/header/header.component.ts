@@ -1,7 +1,5 @@
 import { Component, OnInit, NgZone } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { Observable } from "rxjs";
-import { User } from "src/app/models/user";
 import { AuthService } from "src/app/services/auth.service";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 
@@ -15,7 +13,7 @@ export class HeaderComponent implements OnInit {
   isLogged: boolean = false;
   user: any;
   currentUser: any;
-  currentRoute: any; 
+  currentRoute: any;
 
   constructor(
     public authService: AuthService,
@@ -24,18 +22,18 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      let loggedUser = JSON.parse(localStorage.getItem("user")!);
-      this.currentUser = loggedUser;
-      this.updateUser()
+    this.updateUser();
   }
 
-updateUser(){
-  setInterval(() => {
+  updateUser() {
     let loggedUser = JSON.parse(localStorage.getItem("user")!);
     this.currentUser = loggedUser;
-    console.log(this.currentUser);
-  }, 3000 * 10);
-}
 
-
+    setInterval(() => {
+      let updatedUser = JSON.parse(localStorage.getItem("user")!);
+      if (JSON.stringify(this.currentUser) !== JSON.stringify(updatedUser)) {
+        this.currentUser = updatedUser;
+      }
+    }, 1000);
+  }
 }

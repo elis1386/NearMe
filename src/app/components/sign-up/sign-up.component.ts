@@ -28,6 +28,9 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
+    if (this.signUpForm.invalid) {
+      this.signUpForm.markAllAsTouched()
+    }
    this.authService.SignUp(this.signUpForm.value)
    .then((result) => {
     if (result == null) {
