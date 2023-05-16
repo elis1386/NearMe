@@ -1,5 +1,9 @@
 .footer {
   border-top: 1px solid rgb(164, 164, 164);
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
 }
 .links {
   color: grey;
@@ -26,5 +30,11 @@
   }
   .links {
     font-size: 0.9rem;
+  }
+  .footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
   }
 }

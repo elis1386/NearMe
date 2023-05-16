@@ -3,3 +3,10 @@
   top: 55%;
   z-index: 20;
 }
+@media only screen and (min-width: 768px) {
+  .show-list-btn {
+    position: sticky;
+    top: 45%;
+    z-index: 20;
+  }
+}
