@@ -43,9 +43,9 @@ export class MapComponent implements OnInit {
     public requestService: RequestsService
   ) {}
 
-   ngOnInit() {
+  ngOnInit() {
     //Show current geolocation
-    /*    if (navigator.geolocation) {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.options.center = {
           lat: position.coords.latitude,
@@ -62,6 +62,7 @@ export class MapComponent implements OnInit {
     } else {
       console.log("Geolocation is not supported by this browser.");
     }  */
+
   }
 
   reset() {
@@ -123,7 +124,7 @@ export class MapComponent implements OnInit {
         "icon",
         "place_id",
         "types",
-        "opening_hours"
+        "opening_hours",
       ],
     };
     this.current_place = place;
