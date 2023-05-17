@@ -9,7 +9,6 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { MapComponent } from "./components/map/map.component";
 import { ListComponent } from "./components/list/list.component";
-import { SearchComponent } from "./components/search/search.component";
 import { FavoriteComponent } from "./components/favorite/favorite.component";
 import { GoogleMapsModule } from "@angular/google-maps";
 import { AngularFireModule } from "@angular/fire/compat";
@@ -48,7 +47,6 @@ import { PlacePageComponent } from './components/place-page/place-page.component
     FooterComponent,
     MapComponent,
     ListComponent,
-    SearchComponent,
     FavoriteComponent,
     SignUpComponent,
     SignInComponent,
