@@ -44,12 +44,12 @@ export class MapComponent implements OnInit {
 
    ngOnInit() {
     //Show current geolocation
-    /*    if (navigator.geolocation) {
+       if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.options.center = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
-        }; */
+        };
     this.map = new google.maps.Map(
       document.getElementById("map")!,
       this.options
@@ -60,7 +60,7 @@ export class MapComponent implements OnInit {
          });
     } else {
       console.log("Geolocation is not supported by this browser.");
-    } */
+    } 
   }
 
   reset() {
