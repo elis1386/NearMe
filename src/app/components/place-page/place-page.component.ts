@@ -19,7 +19,6 @@ export class PlacePageComponent {
   }
   showMoreDetails() {
     const placeId = this.route.snapshot.paramMap.get("id");
-    console.log(placeId);
     this.requestService.getAllPlaces().subscribe((data) => {
       data.forEach((place) => {
         if (place.id === placeId) {

@@ -10,12 +10,10 @@ import { RequestsService } from "src/app/services/requests.service";
 })
 export class ListComponent {
   @Input() placesList: any[] = [];
-  userId: any
+  userId: any;
   place: Favorite[] = [];
 
-  constructor(public requestService: RequestsService){}
-
-
+  constructor(public requestService: RequestsService) {}
 
   // add ratingArray value to objects so we can loop trough and add stars
   // does this everytime placesList changes
@@ -36,7 +34,6 @@ export class ListComponent {
   }
 
   addToFavorite(place: Favorite) {
-    console.log('click');
     this.userId = JSON.parse(localStorage.getItem("user")!).uid;
     place.userId = this.userId;
     this.requestService.addToFavorite(place);

@@ -50,19 +50,18 @@ export class MapComponent implements OnInit {
         this.options.center = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
-        }; */
-    this.map = new google.maps.Map(
-      document.getElementById("map")!,
-      this.options
-    );
-    this.service = new google.maps.places.PlacesService(this.map);
-    this.infoWindow = new google.maps.InfoWindow();
-      /*    this.showPlaces("all"); */
-/*          });
+        };
+        this.map = new google.maps.Map(
+          document.getElementById("map")!,
+          this.options
+        );
+        this.service = new google.maps.places.PlacesService(this.map);
+        this.infoWindow = new google.maps.InfoWindow();
+        this.showPlaces("all");
+      });
     } else {
       console.log("Geolocation is not supported by this browser.");
-    }  */
-
+    }
   }
 
   reset() {
@@ -91,7 +90,6 @@ export class MapComponent implements OnInit {
       }
 
       this.placesResult = results;
-      console.log(this.placesResult);
       for (let i = 0; i < results.length!; i++) {
         const place = results[i];
         const marker = new google.maps.Marker({
@@ -172,12 +170,10 @@ export class MapComponent implements OnInit {
 
       this.currentMarker = marker;
       this.infoWindow.open(this.map, marker);
-      console.log(this.current_place);
     });
   }
 
   addToFavorite(place: Favorite) {
-    console.log(place);
     this.userId = JSON.parse(localStorage.getItem("user")!).uid;
     place.userId = this.userId;
     this.requestService.addToFavorite(place);
