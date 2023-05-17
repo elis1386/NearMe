@@ -3,6 +3,7 @@
   width: 400px;
   overflow: hidden;
   object-fit: cover;
+
 }
 .card-link {
   color: var(--main-color);
@@ -19,6 +20,7 @@
   height: auto;
   display: flex;
   gap: 2rem;
+  margin-top: 6rem;
 }
 .badge{
   background-color: var(--main-color);

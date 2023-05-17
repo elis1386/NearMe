@@ -2,6 +2,7 @@
   width: 30%;
   margin: 4rem auto;
   height: 500px;
+  margin-top: 10rem;
 }
 .btn {
   background-color: var(--main-color);
