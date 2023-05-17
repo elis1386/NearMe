@@ -19,9 +19,11 @@ export class RequestsService {
   places!: Observable<Favorite[]>;
   place!: Observable<Favorite>;
 
+  
+
   constructor(private firestore: AngularFirestore, private http: HttpClient) {}
 
-  addToFavorite(place: Favorite) {
+/*   addToFavorite(place: Favorite) {
     const placesCollection = this.firestore.collection("favorite");
     const docRef = placesCollection.doc(place.place_id);
 
@@ -38,7 +40,7 @@ export class RequestsService {
       .catch((error) =>
         console.error("Error adding data to Firestore: ", error)
       );
-  }
+  } */
   getAllPlaces(): Observable<Favorite[]> {
     return this.firestore.collection("favorite").get().pipe(
       map((querySnapshot) => {
@@ -51,7 +53,35 @@ export class RequestsService {
       })
     );
   }
-
+  addToFavorite(place: Favorite) {
+    const placesCollection = this.firestore.collection("favorite");
+    const userId = place.userId.substring(0, 12);
+    const placeId = place.place_id.substring(0, 5);
+    const docId = userId + '_' + placeId
+    
+    const docRef = placesCollection.doc(docId);
+    docRef.get().subscribe((doc) => {
+      if (doc.exists) {
+        console.log("Place already exists in the database");
+      } else {
+        docRef
+          .set({
+            id: docId,
+            name: place.name,
+            vicinity: place.vicinity,
+            photo: place.photos![0].getUrl(),
+            rating: place.rating,
+            userId: place.userId,
+            types: place.types,
+          })
+          .then(() => console.log("Data added to Firestore successfully"))
+          .catch((error) =>
+            console.error("Error adding data to Firestore: ", error)
+          );
+      }
+    });
+  }
+  
   deletePlace(id: string){
     this.firestore.collection('favorite')
     .doc(id).delete().then(() => {

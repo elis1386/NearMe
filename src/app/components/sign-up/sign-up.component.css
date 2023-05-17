@@ -2,6 +2,7 @@
     width: 30%;
     margin: 4rem auto;
     height: 500px;
+    margin-top: 10rem;
   }
   .btn {
     background-color: var(--signUp-btn);
@@ -15,7 +16,7 @@
     .form-signUp {
       width: 60%;
       height: 500px;
-      margin: 2rem auto;
+      margin: 10rem auto;
     }
   }
   
@@ -28,3 +29,10 @@
     }
   }
   
+  @media only screen and (max-width: 375px) {
+    .form-signUp {
+      width: 90%;
+      margin: 6rem auto;
+    }
+  
+  }
