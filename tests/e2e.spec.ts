@@ -11,6 +11,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("sign up ", async ({ page }) => {
+  await page.pause()
   await page.locator(".createUser").click();
   await page.getByPlaceholder("enter you first name").fill(randomName);
   await page.keyboard.press("Tab");
@@ -65,7 +66,6 @@ test.describe("Favorite", () => {
     await page.getByPlaceholder("Password").fill("Elis1234");
     await page.keyboard.press("Tab");
     await page.getByRole("button", { name: "Sign in" }).click();
-    await page.pause()
     await page.getByRole('link', { name: ' Favorite' }).click();
     await page.locator('div').filter({ hasText: 'National Aquarium Denmarkrating: 4.3Jacob Fortlingsvej 1, Kastrup Delete' }).nth(1).click()
     await expect(page).toHaveURL(/place/id);
