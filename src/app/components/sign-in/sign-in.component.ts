@@ -28,7 +28,6 @@ export class SignInComponent {
       .SignIn(this.signInForm.value.email, this.signInForm.value.password)
       .then((result) => {
         if (result == null) {
-          console.log("login into...");
         } else if (result.isValid == false) {
           alert("Your login or password are incorrect. Please try again.");
          
