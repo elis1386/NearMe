@@ -34,7 +34,7 @@ export class SignUpComponent implements OnInit {
    this.authService.SignUp(this.signUpForm.value)
    .then((result) => {
     if (result == null) {
-      this.router.navigate(['map']);
+      this.router.navigate(['sign-in']);
     }
     return throwError(() =>  new Error('Failed login')); 
   })
