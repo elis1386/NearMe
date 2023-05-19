@@ -1,6 +1,7 @@
 import { NgIf } from "@angular/common";
 import { HttpClient, HttpClientJsonpModule } from "@angular/common/http";
 import { Component, Input, NgZone, OnInit } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { Favorite } from "src/app/models/favorite";
 import { RequestsService } from "src/app/services/requests.service";
 
@@ -37,10 +38,12 @@ export class MapComponent implements OnInit {
 
   place: string = "https://source.unsplash.com/random/?user,face/200x200";
   rating: string = " ";
+  user: any;
 
   constructor(
     public httpClient: HttpClient,
-    public requestService: RequestsService
+    public requestService: RequestsService,
+    public auth: AngularFireAuth
   ) {}
 
   ngOnInit() {
@@ -57,7 +60,6 @@ export class MapComponent implements OnInit {
         );
         this.service = new google.maps.places.PlacesService(this.map);
         this.infoWindow = new google.maps.InfoWindow();
-        this.showPlaces("all");
       });
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -174,11 +176,16 @@ export class MapComponent implements OnInit {
   }
 
   addToFavorite(place: Favorite) {
-    this.userId = JSON.parse(localStorage.getItem("user")!).uid;
-    place.userId = this.userId;
-    this.requestService.addToFavorite(place);
-    setTimeout(() => {
-      this.infoWindow.close();
-    }, 300);
+    let loggedUser = JSON.parse(localStorage.getItem("user")!);
+    if (!loggedUser) {
+      alert("If you want to add place in favorite you should sign-in");
+    } else {
+      this.userId = JSON.parse(localStorage.getItem("user")!).uid;
+      place.userId = this.userId;
+      this.requestService.addToFavorite(place);
+      setTimeout(() => {
+        this.infoWindow.close();
+      }, 300);
+    }
   }
 }
