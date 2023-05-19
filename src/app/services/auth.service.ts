@@ -72,6 +72,7 @@ export class AuthService {
         };
 
         this.SetUserData(userData);
+        this.router.navigate(["/sign-in"])
       })
       .catch((error) => {
         if (error.code) return { isValid: false, message: error.message };
