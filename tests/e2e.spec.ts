@@ -11,7 +11,6 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("sign up ", async ({ page }) => {
-  await page.pause()
   await page.locator(".createUser").click();
   await page.getByPlaceholder("enter you first name").fill(randomName);
   await page.keyboard.press("Tab");
@@ -22,7 +21,7 @@ test("sign up ", async ({ page }) => {
   await page.getByPlaceholder("Password").fill(randomPassword);
   await page.keyboard.press("Tab");
   await page.getByRole("button", { name: "Sign up" }).click();
-  await expect(page).toHaveURL(/map/);
+  await expect(page).toHaveURL(/sign-in/);
 });
 
 test.describe("Sign in", () => {
@@ -65,9 +64,10 @@ test.describe("Favorite", () => {
     await page.keyboard.press("Tab");
     await page.getByPlaceholder("Password").fill("Elis1234");
     await page.keyboard.press("Tab");
+    await page.pause()
     await page.getByRole("button", { name: "Sign in" }).click();
     await page.getByRole('link', { name: ' Favorite' }).click();
-    await page.locator('div').filter({ hasText: 'National Aquarium Denmarkrating: 4.3Jacob Fortlingsvej 1, Kastrup Delete' }).nth(1).click()
+    await page.locator('div').filter({ hasText: 'Tapiola swimming hallrating:' }).nth(1).click()
     await expect(page).toHaveURL(/place/id);
   });
 });
