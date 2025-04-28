@@ -7,6 +7,7 @@
         class="btn dropdown-toggle"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        data-cy="places-button"
       >
         Places
       </button>
@@ -15,6 +16,7 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('bakery')"
+            data-cy="place-bakery"
             >Bakery</a
           >
         </li>
@@ -22,13 +24,15 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('museum')"
-            >Musems</a
+            data-cy="place-museum"
+            >Museums</a
           >
         </li>
         <li>
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('church')"
+            data-cy="place-church"
             >Church</a
           >
         </li>
@@ -36,17 +40,20 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('park')"
+            data-cy="place-park"
             >Parks</a
           >
         </li>
       </ul>
     </div>
+
     <div class="btn-group">
       <button
         type="button"
         class="btn dropdown-toggle"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        data-cy="activities-button"
       >
         Activities
       </button>
@@ -55,6 +62,7 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('bowling_alley')"
+            data-cy="activity-bowling"
             >Bowling</a
           >
         </li>
@@ -62,6 +70,7 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('amusement_park')"
+            data-cy="activity-amusement-park"
             >Amusement park</a
           >
         </li>
@@ -69,6 +78,7 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('night_club')"
+            data-cy="activity-night-club"
             >Night club</a
           >
         </li>
@@ -76,17 +86,20 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('aquarium')"
+            data-cy="activity-aquarium"
             >Aquarium</a
           >
         </li>
       </ul>
     </div>
+
     <div class="btn-group">
       <button
         type="button"
         class="btn dropdown-toggle"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        data-cy="events-button"
       >
         Events
       </button>
@@ -95,6 +108,7 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('movie_theater')"
+            data-cy="event-movie"
             >Movie</a
           >
         </li>
@@ -102,6 +116,7 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('gym')"
+            data-cy="event-sport"
             >Sport</a
           >
         </li>
@@ -109,6 +124,7 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('art_gallery')"
+            data-cy="event-art-gallery"
             >Art gallery</a
           >
         </li>
@@ -116,17 +132,16 @@
           <a
             class="btn btn-outline-secondary dropdown-item"
             (click)="showPlaces('tourist_attraction')"
+            data-cy="event-attraction"
             >Attraction</a
           >
         </li>
-        
       </ul>
     </div>
   </div>
+
   <!-- sidebar list button -->
   <app-sidebar [placesList]="placesResult"></app-sidebar>
   <!-- MAP -->
   <div id="map"></div>
-
-
 </section>

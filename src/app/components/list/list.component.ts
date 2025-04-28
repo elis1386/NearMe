@@ -4,9 +4,10 @@ import { Favorite } from "src/app/models/favorite";
 import { RequestsService } from "src/app/services/requests.service";
 
 @Component({
-  selector: "app-list",
-  templateUrl: "./list.component.html",
-  styleUrls: ["./list.component.css"],
+    selector: "app-list",
+    templateUrl: "./list.component.html",
+    styleUrls: ["./list.component.css"],
+    standalone: false
 })
 export class ListComponent {
   @Input() placesList: any[] = [];

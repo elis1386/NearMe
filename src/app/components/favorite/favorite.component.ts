@@ -3,9 +3,10 @@ import { Favorite } from "src/app/models/favorite";
 import { RequestsService } from "src/app/services/requests.service";
 
 @Component({
-  selector: "app-favorite",
-  templateUrl: "./favorite.component.html",
-  styleUrls: ["./favorite.component.css"],
+    selector: "app-favorite",
+    templateUrl: "./favorite.component.html",
+    styleUrls: ["./favorite.component.css"],
+    standalone: false
 })
 export class FavoriteComponent implements OnInit {
   isVisable: boolean = false;

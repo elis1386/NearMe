@@ -6,9 +6,10 @@ import { Favorite } from "src/app/models/favorite";
 import { RequestsService } from "src/app/services/requests.service";
 
 @Component({
-  selector: "app-map",
-  templateUrl: "./map.component.html",
-  styleUrls: ["./map.component.css"],
+    selector: "app-map",
+    templateUrl: "./map.component.html",
+    styleUrls: ["./map.component.css"],
+    standalone: false
 })
 export class MapComponent implements OnInit {
   mapLoaded!: boolean;

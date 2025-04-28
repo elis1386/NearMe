@@ -3,9 +3,10 @@ import { ActivatedRoute } from "@angular/router";
 import { RequestsService } from "src/app/services/requests.service";
 
 @Component({
-  selector: "app-place-page",
-  templateUrl: "./place-page.component.html",
-  styleUrls: ["./place-page.component.css"],
+    selector: "app-place-page",
+    templateUrl: "./place-page.component.html",
+    styleUrls: ["./place-page.component.css"],
+    standalone: false
 })
 export class PlacePageComponent {
   currentPlace: any;
