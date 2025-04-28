@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientJsonpModule, HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MainComponent } from "./components/main/main.component";
@@ -31,44 +31,37 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
 import { PlacePageComponent } from "./components/place-page/place-page.component";
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    HeaderComponent,
-    FooterComponent,
-    MapComponent,
-    ListComponent,
-    FavoriteComponent,
-    SignUpComponent,
-    SignInComponent,
-    SidebarComponent,
-    ForgotPasswordComponent,
-    PlacePageComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    GoogleMapsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    HttpClientJsonpModule,
-  ],
-  providers: [
-    AuthService,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        MainComponent,
+        HeaderComponent,
+        FooterComponent,
+        MapComponent,
+        ListComponent,
+        FavoriteComponent,
+        SignUpComponent,
+        SignInComponent,
+        SidebarComponent,
+        ForgotPasswordComponent,
+        PlacePageComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        GoogleMapsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule], providers: [
+        AuthService,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideDatabase(() => getDatabase()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
+        provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
+    ] })
 export class AppModule {}

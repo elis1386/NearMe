@@ -1,5 +1,5 @@
 import { NgIf } from "@angular/common";
-import { HttpClient, HttpClientJsonpModule } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Component, Input, NgZone, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { Favorite } from "src/app/models/favorite";
