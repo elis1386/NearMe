@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "nearMe:build:production"
+              "buildTarget": "nearMe:build:production"
             },
             "development": {
-              "browserTarget": "nearMe:build:development"
+              "buildTarget": "nearMe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nearMe:build"
+            "buildTarget": "nearMe:build"
           }
         },
         "test": {
