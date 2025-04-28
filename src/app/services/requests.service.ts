@@ -8,7 +8,7 @@ import { Favorite } from "src/app/models/favorite";
 import firebase from "firebase/compat/app";
 import { collection, collectionData } from "@angular/fire/firestore";
 import { Firestore } from "@firebase/firestore";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
@@ -19,11 +19,12 @@ export class RequestsService {
   places!: Observable<Favorite[]>;
   place!: Observable<Favorite>;
 
-  
+  constructor(
+    private firestore: AngularFirestore,
+    private http: HttpClient
+  ) {}
 
-  constructor(private firestore: AngularFirestore, private http: HttpClient) {}
-
-/*   addToFavorite(place: Favorite) {
+  /*   addToFavorite(place: Favorite) {
     const placesCollection = this.firestore.collection("favorite");
     const docRef = placesCollection.doc(place.place_id);
 
@@ -42,23 +43,25 @@ export class RequestsService {
       );
   } */
   getAllPlaces(): Observable<Favorite[]> {
-    return this.firestore.collection("favorite").get().pipe(
-      map((querySnapshot) => {
-        const places: any[] = [];
-        querySnapshot.forEach((doc) => {
-          
-          places.push(doc.data());
-        });
-        return places;
-      })
-    );
+    return this.firestore
+      .collection("favorite")
+      .get()
+      .pipe(
+        map((querySnapshot) => {
+          const places: any[] = [];
+          querySnapshot.forEach((doc) => {
+            places.push(doc.data());
+          });
+          return places;
+        })
+      );
   }
   addToFavorite(place: Favorite) {
     const placesCollection = this.firestore.collection("favorite");
     const userId = place.userId.substring(0, 12);
     const placeId = place.place_id.substring(0, 5);
-    const docId = userId + '_' + placeId
-    
+    const docId = userId + "_" + placeId;
+
     const docRef = placesCollection.doc(docId);
     docRef.get().subscribe((doc) => {
       if (doc.exists) {
@@ -81,15 +84,17 @@ export class RequestsService {
       }
     });
   }
-  
-  deletePlace(id: string){
-    this.firestore.collection('favorite')
-    .doc(id).delete().then(() => {
-      console.log("Place deleted from database");
-    })
-    .catch(err => {
-      console.log('Oops..',err)
-    })
-  } 
 
+  deletePlace(id: string) {
+    this.firestore
+      .collection("favorite")
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log("Place deleted from database");
+      })
+      .catch((err) => {
+        console.log("Oops..", err);
+      });
+  }
 }

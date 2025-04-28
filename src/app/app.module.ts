@@ -15,29 +15,21 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from "@angular/fire/compat/storage";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
-import {
-  AngularFireDatabase,
-  AngularFireDatabaseModule,
-} from "@angular/fire/compat/database";
+import { AngularFireDatabaseModule } from "@angular/fire/compat/database";
 import { environment } from "../environments/enviorment";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { provideAuth, getAuth } from "@angular/fire/auth";
 import { provideDatabase, getDatabase } from "@angular/fire/database";
-import {
-  provideFirestore,
-  getFirestore,
-  Firestore,
-} from "@angular/fire/firestore";
+import { provideFirestore, getFirestore } from "@angular/fire/firestore";
 import { provideStorage, getStorage } from "@angular/fire/storage";
 import { SignUpComponent } from "./components/sign-up/sign-up.component";
 import { SignInComponent } from "./components/sign-in/sign-in.component";
 import { AuthService } from "./services/auth.service";
 import { CommonModule } from "@angular/common";
-import { WeatherComponent } from "./components/weather/weather.component";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { PlacePageComponent } from './components/place-page/place-page.component';
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
+import { PlacePageComponent } from "./components/place-page/place-page.component";
 
 @NgModule({
   declarations: [
@@ -50,22 +42,15 @@ import { PlacePageComponent } from './components/place-page/place-page.component
     FavoriteComponent,
     SignUpComponent,
     SignInComponent,
-    WeatherComponent,
     SidebarComponent,
     ForgotPasswordComponent,
     PlacePageComponent,
-   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
@@ -75,10 +60,15 @@ import { PlacePageComponent } from './components/place-page/place-page.component
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-
-    GooglePlaceModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
